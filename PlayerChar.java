@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class playerChar here.
+ * Player controlled character with walking and idle animations
+ * Sprites from Penusbmic on itch.io
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V. 
+ * @version May 30th, 2022
  */
 public class PlayerChar extends Actor
 {
@@ -13,11 +14,16 @@ public class PlayerChar extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     int speed = 1;
-    int imageIndex = 0;
+    int walkIndex = 0;
+    int idleIndex = 0;
     GreenfootImage[] walkRight = new GreenfootImage[8];
     GreenfootImage[] walkLeft = new GreenfootImage[8];
+    GreenfootImage[] idleRight = new GreenfootImage[5];
+    GreenfootImage[] idleLeft = new GreenfootImage[5];
     private SimpleTimer walkTimer = new SimpleTimer();
+    private SimpleTimer idleTimer = new SimpleTimer();
     private boolean facingRight = true;
+    private boolean isIdle = true;
     
     
     public PlayerChar()
@@ -28,8 +34,15 @@ public class PlayerChar extends Actor
             walkLeft[i] = new GreenfootImage("images/Ball and Chain Bot/walk/walk" + i + ".png");
             walkLeft[i].mirrorHorizontally();
         }
+        for (int i = 0; i < 5; i ++)
+        {
+            idleRight[i] = new GreenfootImage("images/Ball and Chain Bot/idle/idle" + i + ".png");
+            idleLeft[i] = new GreenfootImage("images/Ball and Chain Bot/idle/idle" + i + ".png");
+            idleLeft[i].mirrorHorizontally();
+        }
         setImage(walkRight[0]);
         walkTimer.mark();
+        idleTimer.mark();
     }
     
     public void act()
@@ -44,19 +57,27 @@ public class PlayerChar extends Actor
         {
             move(speed);
             facingRight = true;
+            isIdle = false;
         }
         if (Greenfoot.isKeyDown("a"))
         {
             move(speed * -1);
             facingRight = false;
+            isIdle = false;
         }
         if(Greenfoot.isKeyDown("w"))
         {
             setLocation(getX(), getY()-speed);
+            isIdle = false;
         }
         if(Greenfoot.isKeyDown("s"))
         {
             setLocation(getX(), getY()+speed);
+            isIdle = false;
+        }
+        if (!Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
+        {
+            isIdle = true;
         }
         animate();
     }
@@ -65,17 +86,31 @@ public class PlayerChar extends Actor
     {
         if(walkTimer.millisElapsed() > 80)
         {
-            if (facingRight == true)
+            if (facingRight == true && isIdle == false)
             {
-                setImage(walkRight[imageIndex]);
-                imageIndex = (imageIndex + 1) % 8;
+                setImage(walkRight[walkIndex]);
+                walkIndex = (walkIndex + 1) % 8;
             }
-            else 
+            else if (facingRight == false && isIdle == false)
             {
-                setImage(walkLeft[imageIndex]);
-                imageIndex = (imageIndex + 1) % 8;
+                setImage(walkLeft[walkIndex]);
+                walkIndex = (walkIndex + 1) % 8;
             }
             walkTimer.mark();
+        }
+        if (idleTimer.millisElapsed() > 100)
+        {
+            if (facingRight == true && isIdle == true)
+            {
+                setImage(idleRight[idleIndex]);
+                idleIndex = (idleIndex + 1) % 5;
+            }
+            if (facingRight == false && isIdle == true)
+            {
+                setImage(idleLeft[idleIndex]);
+                idleIndex = (idleIndex + 1) % 5;
+            }
+            idleTimer.mark();
         }
     }
 }
