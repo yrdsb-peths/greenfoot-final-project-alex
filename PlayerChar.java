@@ -16,10 +16,13 @@ public class PlayerChar extends Actor
     int speed = 1;
     int walkIndex = 0;
     int idleIndex = 0;
+    
+    //Arrays for character animations
     GreenfootImage[] walkRight = new GreenfootImage[8];
     GreenfootImage[] walkLeft = new GreenfootImage[8];
     GreenfootImage[] idleRight = new GreenfootImage[5];
     GreenfootImage[] idleLeft = new GreenfootImage[5];
+    
     private SimpleTimer walkTimer = new SimpleTimer();
     private SimpleTimer idleTimer = new SimpleTimer();
     private boolean facingRight = true;
@@ -30,14 +33,14 @@ public class PlayerChar extends Actor
     {
         for (int i = 0; i < 8; i ++)
         {
-            walkRight[i] = new GreenfootImage("images/Ball and Chain Bot/walk/walk" + i + ".png");
-            walkLeft[i] = new GreenfootImage("images/Ball and Chain Bot/walk/walk" + i + ".png");
+            walkRight[i] = new GreenfootImage("images/playerChar/walk/walk" + i + ".png");
+            walkLeft[i] = new GreenfootImage("images/playerChar/walk/walk" + i + ".png");
             walkLeft[i].mirrorHorizontally();
         }
         for (int i = 0; i < 5; i ++)
         {
-            idleRight[i] = new GreenfootImage("images/Ball and Chain Bot/idle/idle" + i + ".png");
-            idleLeft[i] = new GreenfootImage("images/Ball and Chain Bot/idle/idle" + i + ".png");
+            idleRight[i] = new GreenfootImage("images/playerChar/idle/idle" + i + ".png");
+            idleLeft[i] = new GreenfootImage("images/playerChar/idle/idle" + i + ".png");
             idleLeft[i].mirrorHorizontally();
         }
         setImage(walkRight[0]);
@@ -49,8 +52,11 @@ public class PlayerChar extends Actor
     {
         // Add your action code here.
         keyInputs();
+        animate();
+        checkHealth();
     }
     
+    //Controls keys to make character move, the direction the character is facing, and whether or not it is idle.
     public void keyInputs()
     {
         if (Greenfoot.isKeyDown("d"))
@@ -79,9 +85,9 @@ public class PlayerChar extends Actor
         {
             isIdle = true;
         }
-        animate();
     }
     
+    //Animates character with idle and walking animations
     public void animate()
     {
         if(walkTimer.millisElapsed() > 80)
@@ -111,6 +117,15 @@ public class PlayerChar extends Actor
                 idleIndex = (idleIndex + 1) % 5;
             }
             idleTimer.mark();
+        }
+    }
+    
+    public void checkHealth()
+    {
+        if (Greenfoot.isKeyDown("m"))
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.healthDown(1);
         }
     }
 }
