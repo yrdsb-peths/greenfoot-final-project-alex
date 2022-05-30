@@ -1,14 +1,17 @@
 #Greenfoot project file
-class.MyWorld.image=grassyBackground.png
-dependency1.from=PlayerChar
-dependency1.to=SimpleTimer
+class.MyWorld.image=bluerock.jpg
+dependency1.from=MyWorld
+dependency1.to=PlayerChar
 dependency1.type=UsesDependency
-editor.fx.0.height=694
-editor.fx.0.width=1294
-editor.fx.0.x=-7
-editor.fx.0.y=-7
+dependency2.from=PlayerChar
+dependency2.to=SimpleTimer
+dependency2.type=UsesDependency
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 height=694
-package.numDependencies=1
+package.numDependencies=2
 package.numTargets=4
 project.charset=UTF-8
 publish.hasSource=false
