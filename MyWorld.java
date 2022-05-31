@@ -22,6 +22,9 @@ public class MyWorld extends World
         PlayerChar test = new PlayerChar();
         addObject(test, 400, 250);
         addObject(healthPoints, 25,15);
+        
+        Shadow s = new Shadow(1);
+        addObject(s, 399, 263);
     }
     
     public void healthDown(int amount)

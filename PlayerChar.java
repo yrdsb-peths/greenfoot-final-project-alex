@@ -16,17 +16,22 @@ public class PlayerChar extends Actor
     int speed = 1;
     int walkIndex = 0;
     int idleIndex = 0;
+    int chargeIndex = 0;
     
     //Arrays for character animations
     GreenfootImage[] walkRight = new GreenfootImage[8];
     GreenfootImage[] walkLeft = new GreenfootImage[8];
     GreenfootImage[] idleRight = new GreenfootImage[5];
     GreenfootImage[] idleLeft = new GreenfootImage[5];
+    GreenfootImage[] chargeLeft = new GreenfootImage[4];
+    GreenfootImage[] chargeRight = new GreenfootImage[4];
     
     private SimpleTimer walkTimer = new SimpleTimer();
     private SimpleTimer idleTimer = new SimpleTimer();
+    private SimpleTimer chargeTimer = new SimpleTimer();
     private boolean facingRight = true;
     private boolean isIdle = true;
+    private boolean charging = true;
     
     
     public PlayerChar()
@@ -43,9 +48,16 @@ public class PlayerChar extends Actor
             idleLeft[i] = new GreenfootImage("images/playerChar/idle/idle" + i + ".png");
             idleLeft[i].mirrorHorizontally();
         }
+        for (int i = 0; i < 4; i ++)
+        {
+            chargeRight[i] = new GreenfootImage("images/playerChar/chargeUp/charge" + i + ".png");
+            chargeLeft[i] = new GreenfootImage("images/playerChar/chargeUp/charge" + i + ".png");
+            chargeLeft[i].mirrorHorizontally();
+        }
         setImage(walkRight[0]);
         walkTimer.mark();
         idleTimer.mark();
+        chargeTimer.mark();
     }
     
     public void act()
@@ -59,27 +71,35 @@ public class PlayerChar extends Actor
     //Controls keys to make character move, the direction the character is facing, and whether or not it is idle.
     public void keyInputs()
     {
-        if (Greenfoot.isKeyDown("d"))
+        if (Greenfoot.isKeyDown("d") && !Greenfoot.isKeyDown("space"))
         {
             move(speed);
             facingRight = true;
             isIdle = false;
         }
-        if (Greenfoot.isKeyDown("a"))
+        if (Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("space"))
         {
             move(speed * -1);
             facingRight = false;
             isIdle = false;
         }
-        if(Greenfoot.isKeyDown("w"))
+        if(Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("space"))
         {
             setLocation(getX(), getY()-speed);
             isIdle = false;
         }
-        if(Greenfoot.isKeyDown("s"))
+        if(Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("space"))
         {
             setLocation(getX(), getY()+speed);
             isIdle = false;
+        }
+        if (Greenfoot.isKeyDown("space"))
+        {
+            charging = true;
+        }
+        if (!Greenfoot.isKeyDown("space"))
+        {
+            charging = false;
         }
         if (!Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
         {
@@ -117,6 +137,20 @@ public class PlayerChar extends Actor
                 idleIndex = (idleIndex + 1) % 5;
             }
             idleTimer.mark();
+        }
+        if (chargeTimer.millisElapsed() > 100)
+        {
+            if (facingRight == true && charging == true)
+            {
+                setImage(chargeRight[chargeIndex]);
+                chargeIndex = (chargeIndex + 1) % 4;
+            }
+            if (facingRight == false && charging == true)
+            {
+                setImage(chargeLeft[chargeIndex]);
+                chargeIndex = (chargeIndex + 1) % 4;
+            }
+            chargeTimer.mark();
         }
     }
     
