@@ -66,29 +66,33 @@ public class PlayerChar extends Actor
         keyInputs();
         animate();
         checkHealth();
+        createEnemies();
+        
+        Enemy1.x = getX();
+        Enemy1.y = getY();
     }
     
-    //Controls keys to make character move, the direction the character is facing, and whether or not it is idle.
+    //Controls different keys user can press to control character
     public void keyInputs()
     {
-        if (Greenfoot.isKeyDown("d") && !Greenfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("d") && charging == false)
         {
             move(speed);
             facingRight = true;
             isIdle = false;
         }
-        if (Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("a") && charging == false)
         {
             move(speed * -1);
             facingRight = false;
             isIdle = false;
         }
-        if(Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("space"))
+        if(Greenfoot.isKeyDown("w") && charging == false)
         {
             setLocation(getX(), getY()-speed);
             isIdle = false;
         }
-        if(Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("space"))
+        if(Greenfoot.isKeyDown("s") && charging == false)
         {
             setLocation(getX(), getY()+speed);
             isIdle = false;
@@ -107,7 +111,7 @@ public class PlayerChar extends Actor
         }
     }
     
-    //Animates character with idle and walking animations
+    //Animates character with different sets of animations
     public void animate()
     {
         if(walkTimer.millisElapsed() > 80)
@@ -156,10 +160,17 @@ public class PlayerChar extends Actor
     
     public void checkHealth()
     {
-        if (Greenfoot.isKeyDown("m"))
+        if (this.isTouching(Enemy1.class))
         {
+            removeTouching(Enemy1.class);
             MyWorld world = (MyWorld) getWorld();
             world.healthDown(1);
         }
+    }
+    
+    public void createEnemies()
+    {
+        MyWorld world = (MyWorld) getWorld();
+        world.spawnEnemies();
     }
 }

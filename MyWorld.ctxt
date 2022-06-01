@@ -6,4 +6,6 @@ comment1.target=MyWorld()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ \r\n
 comment2.params=amount
 comment2.target=void\ healthDown(int)
-numComments=3
+comment3.params=
+comment3.target=void\ spawnEnemies()
+numComments=4

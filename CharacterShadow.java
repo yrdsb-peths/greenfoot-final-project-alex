@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Shadow extends Actor
+public class CharacterShadow extends Actor
 {
     /**
      * Act - do whatever the shadow wants to do. This method is called whenever
@@ -14,7 +14,7 @@ public class Shadow extends Actor
      */
     private int speed;
     
-    public Shadow(int speed)
+    public CharacterShadow(int speed)
     {
         this.speed = speed;
     }
@@ -28,7 +28,8 @@ public class Shadow extends Actor
         }
         if (Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("space"))
         {
-            move(speed * -1);        }
+            move(speed * -1);        
+        }
         if(Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("space"))
         {
             setLocation(getX(), getY()-speed);
