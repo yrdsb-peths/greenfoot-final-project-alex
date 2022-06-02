@@ -27,9 +27,6 @@ public class MyWorld extends World
         addObject(test, 400, 250);
         addObject(playerHitbox, 400, 250);
         addObject(healthPoints, 25,15);
-        
-        CharacterShadow s = new CharacterShadow(1);
-        addObject(s, test.getX()-1, test.getY()+13);
     }
     
     public void healthDown(int amount)

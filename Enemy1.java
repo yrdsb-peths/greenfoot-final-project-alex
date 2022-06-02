@@ -14,6 +14,7 @@ public class Enemy1 extends Actor
     private SimpleTimer walkTimer = new SimpleTimer();
     public static int x;
     public static int y;
+    boolean facingRight = true;
     
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
@@ -36,14 +37,36 @@ public class Enemy1 extends Actor
     {
         // Add your action code here.
         animate();
+        turnTowards(x, y);
+        move(1);
+        setRotation(0);
         
+        checkRotation();
+    }
+    
+    public void checkRotation()
+    {
+        if (x < getX())
+        {
+            facingRight = false;
+        }
+        if (x > getX())
+        {
+            facingRight = true;
+        }
     }
     
     public void animate()
     {
-        if(walkTimer.millisElapsed() > 80)
+        if(walkTimer.millisElapsed() > 80 && facingRight == true)
         {
             setImage(walkRight[walkIndex]);
+            walkIndex = (walkIndex + 1) % 8;
+            walkTimer.mark();
+        }
+        if (walkTimer.millisElapsed() > 80 && facingRight == false)
+        {
+            setImage(walkLeft[walkIndex]);
             walkIndex = (walkIndex + 1) % 8;
             walkTimer.mark();
         }
