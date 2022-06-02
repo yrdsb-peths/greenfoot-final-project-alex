@@ -65,11 +65,13 @@ public class PlayerChar extends Actor
         // Add your action code here.
         keyInputs();
         animate();
-        checkHealth();
         createEnemies();
         
         Enemy1.x = getX();
         Enemy1.y = getY();
+        
+        Hitbox.x = getX();
+        Hitbox.y = getY();
     }
     
     //Controls different keys user can press to control character
@@ -155,16 +157,6 @@ public class PlayerChar extends Actor
                 chargeIndex = (chargeIndex + 1) % 4;
             }
             chargeTimer.mark();
-        }
-    }
-    
-    public void checkHealth()
-    {
-        if (this.isTouching(Enemy1.class))
-        {
-            removeTouching(Enemy1.class);
-            MyWorld world = (MyWorld) getWorld();
-            world.healthDown(1);
         }
     }
     

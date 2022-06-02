@@ -29,14 +29,14 @@ public class Enemy1 extends Actor
         }
         setImage(walkRight[0]);
         walkTimer.mark();
+
     }
     
     public void act()
     {
         // Add your action code here.
         animate();
-        turnTowards(x,y);
-        move(1);
+        
     }
     
     public void animate()

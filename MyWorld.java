@@ -23,7 +23,9 @@ public class MyWorld extends World
         health = 5;
         enemySpawn.mark();
         PlayerChar test = new PlayerChar();
+        Hitbox playerHitbox = new Hitbox();
         addObject(test, 400, 250);
+        addObject(playerHitbox, 400, 250);
         addObject(healthPoints, 25,15);
         
         CharacterShadow s = new CharacterShadow(1);
@@ -40,8 +42,10 @@ public class MyWorld extends World
     {
         if (enemySpawn.millisElapsed() > 800)
         {
+            int x = Greenfoot.getRandomNumber(800);
+            int y = Greenfoot.getRandomNumber(500);
             Enemy1 e = new Enemy1();
-            addObject(e, Greenfoot.getRandomNumber(800), Greenfoot.getRandomNumber(500));
+            addObject(e, x, y);
             enemySpawn.mark();
         }
         
