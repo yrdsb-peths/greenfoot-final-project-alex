@@ -24,8 +24,12 @@ public class MyWorld extends World
         enemySpawn.mark();
         PlayerChar test = new PlayerChar();
         Hitbox playerHitbox = new Hitbox();
+        PlayerAttack a = new PlayerAttack();
+        
+        addObject(a, 400, 250);
         addObject(test, 400, 250);
         addObject(playerHitbox, 400, 250);
+        
         addObject(healthPoints, 25,15);
     }
     

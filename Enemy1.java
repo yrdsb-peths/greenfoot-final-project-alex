@@ -9,12 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Enemy1 extends Actor
 {
     int walkIndex = 0;
+    int deathIndex = 0;
     GreenfootImage[] walkRight = new GreenfootImage[8];
     GreenfootImage[] walkLeft = new GreenfootImage[8];
+    GreenfootImage[] deathRight = new GreenfootImage[5];
+    GreenfootImage[] deathLeft = new GreenfootImage[5];
     private SimpleTimer walkTimer = new SimpleTimer();
+    private SimpleTimer deathTimer = new SimpleTimer();
     public static int x;
     public static int y;
     boolean facingRight = true;
+    public boolean dead = false;
     
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
@@ -28,8 +33,15 @@ public class Enemy1 extends Actor
             walkLeft[i] = new GreenfootImage("images/toasterBot/walk/walk" + i + ".png");
             walkLeft[i].mirrorHorizontally();
         }
+        for (int i = 0; i < 5; i ++)
+        {
+            deathRight[i] = new GreenfootImage("images/toasterBot/death/death" + i + ".png");
+            deathLeft[i] = new GreenfootImage("images/toasterBot/death/death" + i + ".png");
+            deathLeft[i].mirrorHorizontally();
+        }
         setImage(walkRight[0]);
         walkTimer.mark();
+        deathTimer.mark();
 
     }
     
@@ -42,6 +54,25 @@ public class Enemy1 extends Actor
         setRotation(0);
         
         checkRotation();
+        
+        if (isTouching(PlayerAttack.class))
+        {
+            dead = true;
+        }
+        
+        if (dead = true)
+        {
+            if(walkTimer.millisElapsed() > 80 && facingRight == true)
+            {
+                setImage(deathRight[deathIndex]);
+                deathIndex = (deathIndex + 1) % 5;
+            }
+            if (walkTimer.millisElapsed() > 80 && facingRight == false)
+            {
+                setImage(deathLeft[deathIndex]);
+                deathIndex = (deathIndex + 1) % 5;
+            }
+        }
     }
     
     public void checkRotation()

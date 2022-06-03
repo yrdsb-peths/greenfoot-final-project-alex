@@ -13,7 +13,7 @@ public class PlayerChar extends Actor
      * Act - do whatever the playerChar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int speed = 1;
+    int speed = 2;
     int walkIndex = 0;
     int idleIndex = 0;
     int chargeIndex = 0;
@@ -72,6 +72,9 @@ public class PlayerChar extends Actor
         
         Hitbox.x = getX();
         Hitbox.y = getY();
+        
+        PlayerAttack.x = getX();
+        PlayerAttack.y = getY();
     }
     
     //Controls different keys user can press to control character
