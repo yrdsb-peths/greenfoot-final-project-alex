@@ -54,25 +54,6 @@ public class Enemy1 extends Actor
         setRotation(0);
         
         checkRotation();
-        
-        if (isTouching(PlayerAttack.class))
-        {
-            dead = true;
-        }
-        
-        if (dead = true)
-        {
-            if(walkTimer.millisElapsed() > 80 && facingRight == true)
-            {
-                setImage(deathRight[deathIndex]);
-                deathIndex = (deathIndex + 1) % 5;
-            }
-            if (walkTimer.millisElapsed() > 80 && facingRight == false)
-            {
-                setImage(deathLeft[deathIndex]);
-                deathIndex = (deathIndex + 1) % 5;
-            }
-        }
     }
     
     public void checkRotation()
@@ -102,4 +83,5 @@ public class Enemy1 extends Actor
             walkTimer.mark();
         }
     }
+    
 }

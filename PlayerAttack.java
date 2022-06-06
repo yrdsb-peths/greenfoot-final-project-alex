@@ -13,11 +13,16 @@ public class PlayerAttack extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     int chargeIndex = 0;
+    int releaseIndex = 0;
     GreenfootImage[] charge = new GreenfootImage[8];
+    GreenfootImage[] release = new GreenfootImage[4];
     private SimpleTimer chargeUpTimer = new SimpleTimer();
+    private SimpleTimer releaseTimer = new SimpleTimer();
     public static int x;
     public static int y;
+    boolean isCharging = false;
     
+    public static boolean released = false;    
     
     public PlayerAttack()
     {
@@ -25,7 +30,12 @@ public class PlayerAttack extends Actor
         {
             charge[i] = new GreenfootImage("images/attack/attack" + i + ".png");
         }
+        for (int i = 0; i < 4; i ++)
+        {
+            release[i] = new GreenfootImage("images/attack/attackrelease" + i + ".png");
+        }
         chargeUpTimer.mark();
+        releaseTimer.mark();
     }
     
     public void act()
@@ -33,10 +43,8 @@ public class PlayerAttack extends Actor
         // Add your action code here.
         animate();
         setLocation(x,y);
-        if (!Greenfoot.isKeyDown("space"))
-        {
-            setImage("images/attack0.png");
-        }
+        destroy();
+        release();
     }
     
     public void animate()
@@ -45,7 +53,43 @@ public class PlayerAttack extends Actor
         {
             setImage(charge[chargeIndex]);
             chargeIndex = (chargeIndex + 1) % 8;
+            isCharging = true;
         }
         chargeUpTimer.mark();
+        if (!Greenfoot.isKeyDown("space") && isCharging == false)
+        {
+            setImage("images/attack0.png");
+        }
+    }
+    
+    public void release()
+    {
+        if (isCharging == true && !Greenfoot.isKeyDown("space"))
+        {
+            if (releaseTimer.millisElapsed() > 20 && releaseIndex < 4)
+            {
+                setImage(release[releaseIndex]);
+                releaseIndex += 1;
+                released = true;
+                releaseTimer.mark();
+            }
+        }
+        if (releaseIndex == 4)
+        {
+            isCharging = false;
+            released = false;
+            releaseIndex = 0;
+        }
+    }
+    
+    public void destroy()
+    {
+        if (released)
+        {
+            if (isTouching(Enemy1.class))
+            {
+                removeTouching(Enemy1.class);
+            }
+        }
     }
 }
