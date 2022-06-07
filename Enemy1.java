@@ -12,16 +12,12 @@ public class Enemy1 extends Actor
     int deathIndex = 0;
     GreenfootImage[] walkRight = new GreenfootImage[8];
     GreenfootImage[] walkLeft = new GreenfootImage[8];
-    GreenfootImage[] deathRight = new GreenfootImage[5];
-    GreenfootImage[] deathLeft = new GreenfootImage[5];
     private SimpleTimer walkTimer = new SimpleTimer();
     private SimpleTimer deathTimer = new SimpleTimer();
     public static int x;
     public static int y;
-    boolean facingRight = true;
-    public static boolean dead = false;
-    boolean deathComing = false;
-    
+    public static boolean facingRight = true;
+    public static boolean dead = false;    
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -34,16 +30,8 @@ public class Enemy1 extends Actor
             walkLeft[i] = new GreenfootImage("images/toasterBot/walk/walk" + i + ".png");
             walkLeft[i].mirrorHorizontally();
         }
-        for (int i = 0; i < 5; i ++)
-        {
-            deathRight[i] = new GreenfootImage("images/toasterBot/death/death" + i + ".png");
-            deathLeft[i] = new GreenfootImage("images/toasterBot/death/death" + i + ".png");
-            deathLeft[i].mirrorHorizontally();
-        }
         setImage(walkRight[0]);
         walkTimer.mark();
-        deathTimer.mark();
-
     }
     
     public void act()
@@ -53,6 +41,7 @@ public class Enemy1 extends Actor
         turnTowards(x, y);
         move(1);
         setRotation(0);
+        die();
         
         checkRotation();
     }
@@ -71,20 +60,27 @@ public class Enemy1 extends Actor
     
     public void animate()
     {
-        if (deathComing == false)
+        if(walkTimer.millisElapsed() > 80 && facingRight == true)
         {
-            if(walkTimer.millisElapsed() > 80 && facingRight == true)
-            {
-                setImage(walkRight[walkIndex]);
-                walkIndex = (walkIndex + 1) % 8;
-                walkTimer.mark();
-            }
-            if (walkTimer.millisElapsed() > 80 && facingRight == false)
-            {
-                setImage(walkLeft[walkIndex]);
-                walkIndex = (walkIndex + 1) % 8;
-                walkTimer.mark();
-            }
+            setImage(walkRight[walkIndex]);
+            walkIndex = (walkIndex + 1) % 8;
+            walkTimer.mark();
+        }
+        if (walkTimer.millisElapsed() > 80 && facingRight == false)
+        {
+            setImage(walkLeft[walkIndex]);
+            walkIndex = (walkIndex + 1) % 8;
+            walkTimer.mark();
+        }
+    }
+    
+    public void die()
+    {
+        if (isTouching (PlayerAttack.class) && PlayerAttack.released)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.removeObject(this);
+            world.addObject(new Enemy1Death(), getX(), getY());
         }
     }
 }

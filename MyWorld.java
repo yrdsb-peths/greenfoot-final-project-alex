@@ -49,6 +49,5 @@ public class MyWorld extends World
             addObject(e, x, y);
             enemySpawn.mark();
         }
-        
     }
 }
