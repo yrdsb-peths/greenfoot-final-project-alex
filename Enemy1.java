@@ -19,7 +19,8 @@ public class Enemy1 extends Actor
     public static int x;
     public static int y;
     boolean facingRight = true;
-    public boolean dead = false;
+    public static boolean dead = false;
+    boolean deathComing = false;
     
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
@@ -70,18 +71,20 @@ public class Enemy1 extends Actor
     
     public void animate()
     {
-        if(walkTimer.millisElapsed() > 80 && facingRight == true)
+        if (deathComing == false)
         {
-            setImage(walkRight[walkIndex]);
-            walkIndex = (walkIndex + 1) % 8;
-            walkTimer.mark();
-        }
-        if (walkTimer.millisElapsed() > 80 && facingRight == false)
-        {
-            setImage(walkLeft[walkIndex]);
-            walkIndex = (walkIndex + 1) % 8;
-            walkTimer.mark();
+            if(walkTimer.millisElapsed() > 80 && facingRight == true)
+            {
+                setImage(walkRight[walkIndex]);
+                walkIndex = (walkIndex + 1) % 8;
+                walkTimer.mark();
+            }
+            if (walkTimer.millisElapsed() > 80 && facingRight == false)
+            {
+                setImage(walkLeft[walkIndex]);
+                walkIndex = (walkIndex + 1) % 8;
+                walkTimer.mark();
+            }
         }
     }
-    
 }

@@ -80,28 +80,32 @@ public class PlayerChar extends Actor
     //Controls different keys user can press to control character
     public void keyInputs()
     {
-        if (Greenfoot.isKeyDown("d") && charging == false)
+        if (charging == false)
         {
-            move(speed);
-            facingRight = true;
-            isIdle = false;
+            if (Greenfoot.isKeyDown("d"))
+            {
+                move(speed);
+                facingRight = true;
+                isIdle = false;
+            }
+            if (Greenfoot.isKeyDown("a"))
+            {
+                move(speed * -1);
+                facingRight = false;
+                isIdle = false;
+            }
+            if(Greenfoot.isKeyDown("w"))
+            {
+                setLocation(getX(), getY()-speed);
+                isIdle = false;
+            }
+            if(Greenfoot.isKeyDown("s"))
+            {
+                setLocation(getX(), getY()+speed);
+                isIdle = false;
+            }
         }
-        if (Greenfoot.isKeyDown("a") && charging == false)
-        {
-            move(speed * -1);
-            facingRight = false;
-            isIdle = false;
-        }
-        if(Greenfoot.isKeyDown("w") && charging == false)
-        {
-            setLocation(getX(), getY()-speed);
-            isIdle = false;
-        }
-        if(Greenfoot.isKeyDown("s") && charging == false)
-        {
-            setLocation(getX(), getY()+speed);
-            isIdle = false;
-        }
+        
         if (Greenfoot.isKeyDown("space"))
         {
             charging = true;

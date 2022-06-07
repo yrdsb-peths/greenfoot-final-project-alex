@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class PlayerAttack here.
+ * The player can hold the spacebar to charge up an energy attack and release the key to unleash energy that destroys enemies
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V.
+ * @version 6.06.2022
  */
 public class PlayerAttack extends Actor
 {
@@ -49,24 +49,42 @@ public class PlayerAttack extends Actor
     
     public void animate()
     {
-        if (chargeUpTimer.millisElapsed() < 100 && Greenfoot.isKeyDown("space"))
+        //while the spacebar is held the attack charges up
+        if (chargeUpTimer.millisElapsed() > 50 && Greenfoot.isKeyDown("space") && chargeIndex < 6)
         {
             setImage(charge[chargeIndex]);
-            chargeIndex = (chargeIndex + 1) % 8;
-            isCharging = true;
+            chargeIndex = chargeIndex + 1;
+            chargeUpTimer.mark();
         }
-        chargeUpTimer.mark();
+        
+        if (chargeUpTimer.millisElapsed() > 130 && Greenfoot.isKeyDown("space") && chargeIndex == 6 || chargeIndex == 7)
+        {
+            setImage(charge[chargeIndex]);
+            if (chargeIndex == 6)
+            {
+                chargeIndex = 7;
+            }
+            else 
+            {
+                chargeIndex = 6;
+            }
+            isCharging = true;
+            chargeUpTimer.mark();
+        }
+        
         if (!Greenfoot.isKeyDown("space") && isCharging == false)
         {
             setImage("images/attack0.png");
+            chargeIndex = 0;
         }
     }
     
+    //After holding the spacebar to charge up the attack, players can release the button to unleash a wave of energy which damages enemies
     public void release()
     {
         if (isCharging == true && !Greenfoot.isKeyDown("space"))
         {
-            if (releaseTimer.millisElapsed() > 20 && releaseIndex < 4)
+            if (releaseTimer.millisElapsed() > 40 && releaseIndex < 4 && chargeIndex == 6 || chargeIndex == 7)
             {
                 setImage(release[releaseIndex]);
                 releaseIndex += 1;
@@ -79,9 +97,11 @@ public class PlayerAttack extends Actor
             isCharging = false;
             released = false;
             releaseIndex = 0;
+            chargeIndex = 0;
         }
     }
     
+    //removes enemy when hit by the released attack
     public void destroy()
     {
         if (released)
