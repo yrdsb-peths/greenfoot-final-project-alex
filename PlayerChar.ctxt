@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PlayerChar
-comment0.text=\r\n\ Player\ controlled\ character\ with\ walking\ and\ idle\ animations\r\n\ Sprites\ from\ Penusbmic\ on\ itch.io\r\n\ \r\n\ @author\ Alex\ V.\ \r\n\ @version\ May\ 30th,\ 2022\r\n
+comment0.text=\r\n\ Player\ controlled\ character\ with\ walking,\ idle,\ and\ charging\ animations\r\n\ Sprites\ from\ Penusbmic\ on\ itch.io\r\n\ \r\n\ @author\ Alex\ V.\ \r\n\ @version\ May\ 30th,\ 2022\r\n
 comment1.params=
 comment1.target=PlayerChar()
 comment2.params=

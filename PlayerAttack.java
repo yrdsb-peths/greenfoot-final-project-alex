@@ -116,11 +116,9 @@ public class PlayerAttack extends Actor
             List<Enemy1> enemies =  getIntersectingObjects(Enemy1.class);
             for(int i = 0; i < enemies.size(); i++){
                 enemies.get(i).die();
+                MyWorld world = (MyWorld) getWorld();
+                world.scoreUp(1);
             }
-            
-            //removeTouching(Enemy1.class);
-            MyWorld world = (MyWorld) getWorld();
-            world.scoreUp(1);
         }       
     }
 }

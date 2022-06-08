@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Player controlled character with walking and idle animations
+ * Player controlled character with walking, idle, and charging animations
  * Sprites from Penusbmic on itch.io
  * 
  * @author Alex V. 
@@ -26,9 +26,12 @@ public class PlayerChar extends Actor
     GreenfootImage[] chargeLeft = new GreenfootImage[4];
     GreenfootImage[] chargeRight = new GreenfootImage[4];
     
+    //Timers for animations
     private SimpleTimer walkTimer = new SimpleTimer();
     private SimpleTimer idleTimer = new SimpleTimer();
     private SimpleTimer chargeTimer = new SimpleTimer();
+    
+    //Booleans that determine which animations should be shown onscreen
     private boolean facingRight = true;
     private boolean isIdle = true;
     private boolean charging = true;
@@ -75,6 +78,9 @@ public class PlayerChar extends Actor
         
         PlayerAttack.x = getX();
         PlayerAttack.y = getY();
+        
+        MyWorld world = (MyWorld) getWorld();
+        world.healthPoints.setLocation(getX(), getY() - 20);
     }
     
     //Controls different keys user can press to control character
