@@ -11,6 +11,7 @@ public class Enemy1Death extends Actor
     GreenfootImage[] death = new GreenfootImage[5];
     int deathIndex = 0;
     SimpleTimer deathTimer = new SimpleTimer();
+    SimpleTimer disappearTimer = new SimpleTimer();
     
     /**
      * Act - do whatever the Enemy1Death wants to do. This method is called whenever
@@ -20,7 +21,7 @@ public class Enemy1Death extends Actor
     {
         // Add your action code here.
         animateDeath();
-        
+        disappear();
     }
     
     public Enemy1Death()
@@ -30,6 +31,7 @@ public class Enemy1Death extends Actor
             death[i] = new GreenfootImage("images/toasterBot/death/death" + i + ".png");
         }
         deathTimer.mark();
+        disappearTimer.mark();
     }
     
     public void animateDeath()
@@ -39,6 +41,14 @@ public class Enemy1Death extends Actor
             setImage(death[deathIndex]);
             deathIndex = deathIndex + 1;
             deathTimer.mark();
+        }
+    }
+    
+    public void disappear()
+    {
+        if (disappearTimer.millisElapsed() > 5000)
+        {
+            getWorld().removeObject(this);
         }
     }
 }

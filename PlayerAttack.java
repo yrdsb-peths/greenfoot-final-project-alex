@@ -113,14 +113,13 @@ public class PlayerAttack extends Actor
     {
         if (isTouching(Enemy1.class))
         {
-            List<Enemy1> enemies =  getObjectsInRange(100, Enemy1.class);
+            List<Enemy1> enemies =  getIntersectingObjects(Enemy1.class);
             for(int i = 0; i < enemies.size(); i++){
                 enemies.get(i).die();
             }
             
             //removeTouching(Enemy1.class);
             MyWorld world = (MyWorld) getWorld();
-            
             world.scoreUp(1);
         }       
     }

@@ -75,7 +75,6 @@ public class Enemy1 extends Actor
 
     public void die()
     {
-
         getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());
         getWorld().removeObject(this);
     }
