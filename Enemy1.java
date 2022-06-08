@@ -16,7 +16,7 @@ public class Enemy1 extends Actor
     private SimpleTimer deathTimer = new SimpleTimer();
     public static int x;
     public static int y;
-    public static boolean facingRight = true;
+    boolean facingRight = true;
     public static boolean dead = false;    
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
@@ -76,11 +76,9 @@ public class Enemy1 extends Actor
     
     public void die()
     {
-        if (isTouching (PlayerAttack.class) && PlayerAttack.released)
+        if (isTouching(PlayerAttack.class) && PlayerAttack.released)
         {
-            MyWorld world = (MyWorld) getWorld();
-            world.removeObject(this);
-            world.addObject(new Enemy1Death(), getX(), getY());
+            getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());
         }
     }
 }

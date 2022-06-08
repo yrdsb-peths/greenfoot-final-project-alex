@@ -14,10 +14,14 @@ public class PlayerAttack extends Actor
      */
     int chargeIndex = 0;
     int releaseIndex = 0;
+    
     GreenfootImage[] charge = new GreenfootImage[8];
     GreenfootImage[] release = new GreenfootImage[4];
+    
     private SimpleTimer chargeUpTimer = new SimpleTimer();
     private SimpleTimer releaseTimer = new SimpleTimer();
+    SimpleTimer deathDelay = new SimpleTimer();
+    
     public static int x;
     public static int y;
     boolean isCharging = false;
@@ -36,6 +40,7 @@ public class PlayerAttack extends Actor
         }
         chargeUpTimer.mark();
         releaseTimer.mark();
+        deathDelay.mark();
     }
     
     public void act()
@@ -43,8 +48,8 @@ public class PlayerAttack extends Actor
         // Add your action code here.
         animate();
         setLocation(x,y);
-        destroy();
         release();
+        destroy();
     }
     
     public void animate()
@@ -100,8 +105,7 @@ public class PlayerAttack extends Actor
             chargeIndex = 0;
         }
     }
-    
-    //removes enemy when hit by the released attack
+
     public void destroy()
     {
         if (released)
@@ -109,7 +113,9 @@ public class PlayerAttack extends Actor
             if (isTouching(Enemy1.class))
             {
                 removeTouching(Enemy1.class);
-            }
+                MyWorld world = (MyWorld) getWorld();
+                world.scoreUp(1);
+            }       
         }
     }
 }

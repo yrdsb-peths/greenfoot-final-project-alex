@@ -34,7 +34,7 @@ public class Enemy1Death extends Actor
     
     public void animateDeath()
     {
-        if (deathTimer.millisElapsed() > 80 && deathIndex < 5)
+        if (deathTimer.millisElapsed() > 200 && deathIndex < 5)
         {
             setImage(death[deathIndex]);
             deathIndex = deathIndex + 1;

@@ -9,7 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     public static int health = 5;
+    public static int score = 0;
     Label healthPoints = new Label("HP: " + health, 20);
+    Label scoreLabel = new Label("BOTS DEMOLISHED: " + score, 20);
     SimpleTimer enemySpawn = new SimpleTimer();
     
     /**
@@ -31,12 +33,18 @@ public class MyWorld extends World
         addObject(playerHitbox, 400, 250);
         
         addObject(healthPoints, 25,15);
+        addObject(scoreLabel, 700, 15);
     }
     
     public void healthDown(int amount)
     {
         health -= amount;
         healthPoints.setValue("HP: " + health);
+    }
+    public void scoreUp(int amount)
+    {
+        score += amount;
+        scoreLabel.setValue("BOTS DEMOLISHED: " + score);
     }
     
     public void spawnEnemies()
