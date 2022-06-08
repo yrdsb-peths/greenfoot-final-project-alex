@@ -33,7 +33,7 @@ public class Enemy1 extends Actor
         setImage(walkRight[0]);
         walkTimer.mark();
     }
-    
+
     public void act()
     {
         // Add your action code here.
@@ -41,11 +41,10 @@ public class Enemy1 extends Actor
         turnTowards(x, y);
         move(1);
         setRotation(0);
-        die();
-        
+
         checkRotation();
     }
-    
+
     public void checkRotation()
     {
         if (x < getX())
@@ -57,7 +56,7 @@ public class Enemy1 extends Actor
             facingRight = true;
         }
     }
-    
+
     public void animate()
     {
         if(walkTimer.millisElapsed() > 80 && facingRight == true)
@@ -73,12 +72,11 @@ public class Enemy1 extends Actor
             walkTimer.mark();
         }
     }
-    
+
     public void die()
     {
-        if (isTouching(PlayerAttack.class) && PlayerAttack.released)
-        {
-            getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());
-        }
+
+        getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());
+        getWorld().removeObject(this);
     }
 }
