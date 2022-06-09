@@ -86,6 +86,8 @@ public class PlayerChar extends Actor
         //hitbox and playerAttack move with the player, enemies, use player coordinates to follow. 
         Enemy1.x = getX();
         Enemy1.y = getY();
+        Enemy2.x = getX();
+        Enemy2.y = getY();
         Hitbox.x = getX();
         Hitbox.y = getY();
         PlayerAttack.x = getX();
@@ -199,7 +201,12 @@ public class PlayerChar extends Actor
         {
             removeTouching(Potion.class);
             MyWorld world = (MyWorld) getWorld();
-            world.healthDown(-2);
+            if (world.health + 2 > 5)
+            {
+                world.healthDown(-(5-world.health));
+            }else{
+                world.healthDown(-2);
+            }
         }
     }
 }

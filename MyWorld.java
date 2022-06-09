@@ -60,11 +60,23 @@ public class MyWorld extends World
     {
         if (enemySpawn.millisElapsed() > 800)
         {
-            int x = Greenfoot.getRandomNumber(800);
-            int y = Greenfoot.getRandomNumber(500);
-            Enemy1 e = new Enemy1();
-            addObject(e, x, y);
-            enemySpawn.mark();
+            int rand = Greenfoot.getRandomNumber(3);
+            if (rand != 1)
+            {
+                int x = Greenfoot.getRandomNumber(800);
+                int y = Greenfoot.getRandomNumber(500);
+                Enemy1 e = new Enemy1();
+                addObject(e, x, y);
+                enemySpawn.mark();
+            } else if (rand == 1)
+            {
+                int x = Greenfoot.getRandomNumber(800);
+                int y = Greenfoot.getRandomNumber(500);
+                Enemy2 e = new Enemy2();
+                addObject(e, x, y);
+                enemySpawn.mark();
+            }
+            
         }
     }
     

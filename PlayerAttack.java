@@ -119,6 +119,15 @@ public class PlayerAttack extends Actor
                 MyWorld world = (MyWorld) getWorld();
                 world.scoreUp(1);
             }
-        }       
+        } 
+        if (isTouching(Enemy2.class))
+        {
+            List<Enemy2> enemies =  getIntersectingObjects(Enemy2.class);
+            for(int i = 0; i < enemies.size(); i++){
+                enemies.get(i).die();
+                MyWorld world = (MyWorld) getWorld();
+                world.scoreUp(1);
+            }
+        } 
     }
 }

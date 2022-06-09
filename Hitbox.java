@@ -30,5 +30,11 @@ public class Hitbox extends Actor
             MyWorld world = (MyWorld) getWorld();
             world.healthDown(1);
         }
+        if (this.isTouching(Enemy2.class))
+        {
+            removeTouching(Enemy2.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.healthDown(1);
+        }
     }
 }
