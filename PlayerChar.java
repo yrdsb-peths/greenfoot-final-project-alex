@@ -90,6 +90,8 @@ public class PlayerChar extends Actor
         Enemy2.y = getY();
         Hitbox.x = getX();
         Hitbox.y = getY();
+        Bullet.x = getX();
+        Bullet.y = getY();
         PlayerAttack.x = getX();
         PlayerAttack.y = getY();
     }

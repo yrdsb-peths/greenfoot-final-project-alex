@@ -58,13 +58,13 @@ public class Enemy2 extends Actor
 
     public void animate()
     {
-        if(walkTimer.millisElapsed() > 80 && facingRight == true)
+        if(walkTimer.millisElapsed() > 60 && facingRight == true)
         {
             setImage(walkRight[walkIndex]);
             walkIndex = (walkIndex + 1) % 6;
             walkTimer.mark();
         }
-        if (walkTimer.millisElapsed() > 80 && facingRight == false)
+        if (walkTimer.millisElapsed() > 60 && facingRight == false)
         {
             setImage(walkLeft[walkIndex]);
             walkIndex = (walkIndex + 1) % 6;

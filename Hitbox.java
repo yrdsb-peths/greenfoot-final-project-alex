@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class Hitbox here.
  * 
@@ -24,17 +24,23 @@ public class Hitbox extends Actor
     
     public void checkHealth()
     {
-        if (this.isTouching(Enemy1.class))
+        if (isTouching(Enemy1.class))
         {
-            removeTouching(Enemy1.class);
-            MyWorld world = (MyWorld) getWorld();
-            world.healthDown(1);
-        }
-        if (this.isTouching(Enemy2.class))
+            List<Enemy1> enemies =  getIntersectingObjects(Enemy1.class);
+            for(int i = 0; i < enemies.size(); i++){
+                enemies.get(i).die();
+                MyWorld world = (MyWorld) getWorld();
+                world.healthDown(1);
+            }
+        } 
+        if (isTouching(Enemy2.class))
         {
-            removeTouching(Enemy2.class);
-            MyWorld world = (MyWorld) getWorld();
-            world.healthDown(1);
+            List<Enemy2> enemies =  getIntersectingObjects(Enemy2.class);
+            for(int i = 0; i < enemies.size(); i++){
+                enemies.get(i).die();
+                MyWorld world = (MyWorld) getWorld();
+                world.healthDown(2);
+            }
         }
     }
 }
