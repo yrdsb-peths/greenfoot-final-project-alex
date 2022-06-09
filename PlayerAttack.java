@@ -58,7 +58,7 @@ public class PlayerAttack extends Actor
     public void animate()
     {
         //while the spacebar is held the attack charges up
-        if (chargeUpTimer.millisElapsed() > 50 && Greenfoot.isKeyDown("space") && chargeIndex < 6)
+        if (chargeUpTimer.millisElapsed() > 65 && Greenfoot.isKeyDown("space") && chargeIndex < 6)
         {
             setImage(charge[chargeIndex]);
             chargeIndex = chargeIndex + 1;

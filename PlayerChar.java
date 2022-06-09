@@ -14,9 +14,12 @@ public class PlayerChar extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     int speed = 2;
+    
+    //indexes for different animations
     int walkIndex = 0;
     int idleIndex = 0;
     int chargeIndex = 0;
+    int deathIndex = 0;
     
     //Arrays for character animations
     GreenfootImage[] walkRight = new GreenfootImage[8];
@@ -25,11 +28,13 @@ public class PlayerChar extends Actor
     GreenfootImage[] idleLeft = new GreenfootImage[5];
     GreenfootImage[] chargeLeft = new GreenfootImage[4];
     GreenfootImage[] chargeRight = new GreenfootImage[4];
+    GreenfootImage[] death = new GreenfootImage[5];
     
     //Timers for animations
     private SimpleTimer walkTimer = new SimpleTimer();
     private SimpleTimer idleTimer = new SimpleTimer();
     private SimpleTimer chargeTimer = new SimpleTimer();
+    private SimpleTimer deathTimer = new SimpleTimer();
     
     //Booleans that determine which animations should be shown onscreen
     private boolean facingRight = true;
@@ -57,6 +62,10 @@ public class PlayerChar extends Actor
             chargeLeft[i] = new GreenfootImage("images/playerChar/chargeUp/charge" + i + ".png");
             chargeLeft[i].mirrorHorizontally();
         }
+        for (int i = 0; i < 5; i ++)
+        {
+            death[i] = new GreenfootImage("images/playerChar/death/death" + i + ".png");
+        }
         setImage(walkRight[0]);
         walkTimer.mark();
         idleTimer.mark();
@@ -68,28 +77,43 @@ public class PlayerChar extends Actor
         // Add your action code here.
         keyInputs();
         animate();
-        createEnemies();
+        consume();
+        MyWorld world = (MyWorld) getWorld();
+        world.spawnEnemies();
+        world.spawnPowerups();
+        world.healthPoints.setLocation(getX(), getY() - 20);
         
+        //hitbox and playerAttack move with the player, enemies, use player coordinates to follow. 
         Enemy1.x = getX();
         Enemy1.y = getY();
-        
         Hitbox.x = getX();
         Hitbox.y = getY();
-        
         PlayerAttack.x = getX();
         PlayerAttack.y = getY();
-        
-        MyWorld world = (MyWorld) getWorld();
-        world.healthPoints.setLocation(getX(), getY() - 20);
     }
     
     //Controls different keys user can press to control character
     public void keyInputs()
     {
+        if (Greenfoot.isKeyDown("space"))
+        {
+            charging = true;
+        }
+        if (!Greenfoot.isKeyDown("space"))
+        {
+            charging = false;
+        }
+        //checks if character is idle
+        if (!Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
+        {
+            isIdle = true;
+        }
+        
         if (charging == false)
         {
             if (Greenfoot.isKeyDown("d"))
             {
+
                 move(speed);
                 facingRight = true;
                 isIdle = false;
@@ -110,19 +134,6 @@ public class PlayerChar extends Actor
                 setLocation(getX(), getY()+speed);
                 isIdle = false;
             }
-        }
-        
-        if (Greenfoot.isKeyDown("space"))
-        {
-            charging = true;
-        }
-        if (!Greenfoot.isKeyDown("space"))
-        {
-            charging = false;
-        }
-        if (!Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
-        {
-            isIdle = true;
         }
     }
     
@@ -173,9 +184,22 @@ public class PlayerChar extends Actor
         }
     }
     
-    public void createEnemies()
+    public void die()
     {
-        MyWorld world = (MyWorld) getWorld();
-        world.spawnEnemies();
+        if (deathTimer.millisElapsed() > 100 && deathIndex < 5)
+        {
+            setImage(death[deathIndex]);
+            deathIndex += 1;
+        }
+    }
+    
+    public void consume()
+    {
+        if (isTouching(Potion.class))
+        {
+            removeTouching(Potion.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.healthDown(-2);
+        }
     }
 }

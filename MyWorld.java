@@ -13,6 +13,8 @@ public class MyWorld extends World
     Label healthPoints = new Label("HP: " + health, 20);
     Label scoreLabel = new Label("BOTS DEMOLISHED: " + score, 80);
     SimpleTimer enemySpawn = new SimpleTimer();
+    SimpleTimer powerupSpawn = new SimpleTimer();
+    PlayerChar test = new PlayerChar();
     
     /**
      * Constructor for objects of class MyWorld.
@@ -32,7 +34,6 @@ public class MyWorld extends World
         scoreLabel.setValue("BOTS DEMOLISHED: " + score);
         
         enemySpawn.mark();
-        PlayerChar test = new PlayerChar();
         Hitbox playerHitbox = new Hitbox();
         PlayerAttack a = new PlayerAttack();
         
@@ -65,5 +66,22 @@ public class MyWorld extends World
             addObject(e, x, y);
             enemySpawn.mark();
         }
+    }
+    
+    public void spawnPowerups()
+    {
+        if (powerupSpawn.millisElapsed() > 10000)
+        {
+            int x = Greenfoot.getRandomNumber(800);
+            int y = Greenfoot.getRandomNumber(500);
+            Potion p = new Potion();
+            addObject(p, x, y);
+            powerupSpawn.mark();
+        }
+    }
+    
+    public void gameOver()
+    {
+        test.die();
     }
 }
