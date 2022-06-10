@@ -91,4 +91,9 @@ public class Enemy2 extends Actor
         getWorld().addObject(new Enemy2Death(), this.getX(), this.getY());
         getWorld().removeObject(this);
     }
+    
+    public void fireBullet()
+    {
+        
+    }
 }
