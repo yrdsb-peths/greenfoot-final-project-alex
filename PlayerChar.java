@@ -103,7 +103,7 @@ public class PlayerChar extends Actor
     //Controls different keys user can press to control character
     public void keyInputs()
     {
-        if (Greenfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("space") && !Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
         {
             charging = true;
         }

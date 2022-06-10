@@ -15,6 +15,11 @@ public class Enemy2 extends Actor
     public static int x;
     public static int y;
     boolean facingRight = true; 
+    
+    int randomX = Greenfoot.getRandomNumber(800);
+    int randomY = Greenfoot.getRandomNumber(500);
+    private SimpleTimer directionSwitch = new SimpleTimer();
+    
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -29,18 +34,27 @@ public class Enemy2 extends Actor
             walkLeft[i].mirrorHorizontally();
             walkLeft[i].scale(50,45);
         }
+        
         setImage(walkRight[0]);
         walkTimer.mark();
+        directionSwitch.mark();
     }
 
     public void act()
     {
         // Add your action code here.
         animate();
-        turnTowards(x, y);
+        turnTowards(randomX, randomY);
         move(1);
+        if (directionSwitch.millisElapsed() > 3000)
+        {
+            randomX = Greenfoot.getRandomNumber(800);
+            randomY = Greenfoot.getRandomNumber(500);
+            
+            directionSwitch.mark();
+        }
+        
         setRotation(0);
-
         checkRotation();
     }
 
