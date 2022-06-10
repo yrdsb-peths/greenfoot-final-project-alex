@@ -60,7 +60,7 @@ public class MyWorld extends World
     {
         if (enemySpawn.millisElapsed() > timer)
         {
-            int rand = Greenfoot.getRandomNumber(3);
+            int rand = Greenfoot.getRandomNumber(6);
             if (rand != 1)
             {
                 int x = Greenfoot.getRandomNumber(800);

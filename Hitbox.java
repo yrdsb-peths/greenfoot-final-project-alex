@@ -43,5 +43,14 @@ public class Hitbox extends Actor
                 world.healthDown(2);
             }
         }
+        if (isTouching(Bullet.class))
+        {
+            List<Bullet> bullets =  getIntersectingObjects(Bullet.class);
+            for(int i = 0; i < bullets.size(); i++){
+                bullets.get(i).die();
+                MyWorld world = (MyWorld) getWorld();
+                world.healthDown(1);
+            }
+        }
     }
 }

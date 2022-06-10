@@ -15,13 +15,17 @@ public class Bullet extends Actor
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Bullet()
-    {
-        turnTowards(x,y);
-    }
-    
     public void act()
     {
         move(4);
+        if (isAtEdge())
+        {
+            die();
+        }
+    }
+    
+    public void die()
+    {
+        getWorld().removeObject(this);
     }
 }
