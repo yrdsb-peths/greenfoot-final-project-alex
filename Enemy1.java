@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class enemy1 here.
+ * Basic enemy, which tracks the player's position and follows, player takes 1 damage when touching this enemy
+ * which is destroyed upon touching the player
  * 
- * @author (your name) 
+ * @author Alex V.
  * @version (a version number or a date)
  */
 public class Enemy1 extends Actor
@@ -70,6 +71,7 @@ public class Enemy1 extends Actor
         }
     }
 
+    //creates a new enemy1death object at its location while removing itself from the screen
     public void die()
     {
         getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());

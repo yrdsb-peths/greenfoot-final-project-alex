@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Enemy1Death here.
+ * Sprite spawned in upon any Enemy1 death, acting as a death animation. Removed after a few seconds of being onscreen
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -34,6 +34,7 @@ public class Enemy1Death extends Actor
         disappearTimer.mark();
     }
     
+    //Plays its animation only once, stopping at the last frame
     public void animateDeath()
     {
         if (deathTimer.millisElapsed() > 150 && deathIndex < 5)
@@ -43,7 +44,8 @@ public class Enemy1Death extends Actor
             deathTimer.mark();
         }
     }
-    
+
+    //After this object has been onscreen for 5 seconds, it despawns
     public void disappear()
     {
         if (disappearTimer.millisElapsed() > 5000)

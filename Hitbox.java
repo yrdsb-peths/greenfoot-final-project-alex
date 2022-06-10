@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class Hitbox here.
+ * Hitbox for the player object, following the player around. If enemies touch the hitbox the player takes damage.
  * 
- * @author (your name) 
+ * @author Alex V. 
  * @version (a version number or a date)
  */
 public class Hitbox extends Actor
@@ -22,6 +22,7 @@ public class Hitbox extends Actor
         checkHealth();
     }
     
+    //Removes player health depending on what enemy the player is touching
     public void checkHealth()
     {
         if (isTouching(Enemy1.class))

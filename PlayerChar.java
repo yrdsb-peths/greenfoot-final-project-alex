@@ -41,6 +41,8 @@ public class PlayerChar extends Actor
     private boolean isIdle = true;
     private boolean charging = true;
     
+    int spawnTimer = 2000;
+    private SimpleTimer difficultyTimer = new SimpleTimer();
     
     public PlayerChar()
     {
@@ -70,6 +72,7 @@ public class PlayerChar extends Actor
         walkTimer.mark();
         idleTimer.mark();
         chargeTimer.mark();
+        difficultyTimer.mark();
     }
     
     public void act()
@@ -78,8 +81,9 @@ public class PlayerChar extends Actor
         keyInputs();
         animate();
         consume();
+        difficultyIncrease();
         MyWorld world = (MyWorld) getWorld();
-        world.spawnEnemies();
+        world.spawnEnemies(spawnTimer);
         world.spawnPowerups();
         world.healthPoints.setLocation(getX(), getY() - 20);
         
@@ -197,6 +201,7 @@ public class PlayerChar extends Actor
         }
     }
     
+    //increase heath when touching potion
     public void consume()
     {
         if (isTouching(Potion.class))
@@ -209,6 +214,16 @@ public class PlayerChar extends Actor
             }else{
                 world.healthDown(-2);
             }
+        }
+    }
+    
+    //enemy spawnrate increases by 200 milliseconds every 15 seconds
+    public void difficultyIncrease()
+    {
+        if (difficultyTimer.millisElapsed() > 15000 && spawnTimer >= 800)
+        {
+            spawnTimer -= 200;
+            difficultyTimer.mark();
         }
     }
 }

@@ -56,9 +56,9 @@ public class MyWorld extends World
         scoreLabel.setValue("BOTS DEMOLISHED: " + score);
     }
     
-    public void spawnEnemies()
+    public void spawnEnemies(int timer)
     {
-        if (enemySpawn.millisElapsed() > 800)
+        if (enemySpawn.millisElapsed() > timer)
         {
             int rand = Greenfoot.getRandomNumber(3);
             if (rand != 1)

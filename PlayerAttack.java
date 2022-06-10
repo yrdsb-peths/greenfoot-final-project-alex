@@ -64,7 +64,7 @@ public class PlayerAttack extends Actor
             chargeIndex = chargeIndex + 1;
             chargeUpTimer.mark();
         }
-
+        //when fully charged the attack alternates between its last two frames
         if (chargeUpTimer.millisElapsed() > 130 && Greenfoot.isKeyDown("space") && chargeIndex == 6 || chargeIndex == 7)
         {
             setImage(charge[chargeIndex]);
@@ -79,7 +79,7 @@ public class PlayerAttack extends Actor
             isCharging = true;
             chargeUpTimer.mark();
         }
-
+        //otherwise, while the space key is not held, the image is set to a small circle, not visible to players
         if (!Greenfoot.isKeyDown("space") && isCharging == false)
         {
             setImage("images/attack0.png");
@@ -109,6 +109,7 @@ public class PlayerAttack extends Actor
         }
     }
 
+    //If the attack hits enemies, executes the die function from both enemy classes, increases score.
     public void destroy()
     {
         if (isTouching(Enemy1.class))
