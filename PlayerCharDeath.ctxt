@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PlayerCharDeath
+comment0.text=\r\n\ Sprite\ spawned\ in\ upon\ any\ Enemy1\ death,\ acting\ as\ a\ death\ animation.\ Removed\ after\ a\ few\ seconds\ of\ being\ onscreen\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PlayerCharDeath\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=PlayerCharDeath()
+comment3.params=
+comment3.target=void\ animateDeath()
+numComments=4

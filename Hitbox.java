@@ -20,6 +20,13 @@ public class Hitbox extends Actor
         // Add your action code here.
         setLocation(x,y);
         checkHealth();
+        if (MyWorld.health == 0)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.gameOver();
+            GameOverWorld world2 = new GameOverWorld();
+            Greenfoot.setWorld(world2);
+        }
     }
     
     //Removes player health depending on what enemy the player is touching
@@ -34,15 +41,6 @@ public class Hitbox extends Actor
                 world.healthDown(1);
             }
         } 
-        if (isTouching(Enemy2.class))
-        {
-            List<Enemy2> enemies =  getIntersectingObjects(Enemy2.class);
-            for(int i = 0; i < enemies.size(); i++){
-                enemies.get(i).die();
-                MyWorld world = (MyWorld) getWorld();
-                world.healthDown(2);
-            }
-        }
         if (isTouching(Bullet.class))
         {
             List<Bullet> bullets =  getIntersectingObjects(Bullet.class);

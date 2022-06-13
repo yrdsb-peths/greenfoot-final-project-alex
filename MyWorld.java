@@ -10,11 +10,15 @@ public class MyWorld extends World
 {
     public static int health = 5;
     public static int score = 0;
+    public static int highScore;
     Label healthPoints = new Label("HP: " + health, 20);
     Label scoreLabel = new Label("BOTS DEMOLISHED: " + score, 80);
     SimpleTimer enemySpawn = new SimpleTimer();
     SimpleTimer powerupSpawn = new SimpleTimer();
     PlayerChar test = new PlayerChar();
+    
+    public static int x;
+    public static int y;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -42,7 +46,6 @@ public class MyWorld extends World
         addObject(playerHitbox, 400, 150);
         
         addObject(healthPoints, 25,15);
-        
     }
     
     public void healthDown(int amount)
@@ -94,6 +97,11 @@ public class MyWorld extends World
     
     public void gameOver()
     {
-        test.die();
+        x = test.getX();
+        y = test.getY();
+        if (score >= highScore)
+        {
+            highScore = score;
+        }
     }
 }

@@ -53,6 +53,10 @@ public class PlayerAttack extends Actor
         if(released){
             destroy();
         }
+        if (isTouching(Bullet.class) && isCharging == true && released == false)
+        {
+            removeTouching(Bullet.class);
+        }
     }
 
     public void animate()
@@ -131,5 +135,6 @@ public class PlayerAttack extends Actor
                 world.scoreUp(1);
             }
         } 
+
     }
 }

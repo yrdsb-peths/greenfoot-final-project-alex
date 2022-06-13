@@ -8,20 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-
     /**
      * Constructor for objects of class TitleScreen.
      * 
      */
+
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 500, 1); 
 
-        Label titleLabel = new Label("Robot Rush", 75);
-        addObject(titleLabel, 400, 250);
+        Label titleLabel = new Label("ROBOT RUSH", 120);
+        addObject(titleLabel, 400, 150);
         Label instructions = new Label ("Press space to start!", 40);
-        addObject(instructions, 400, 330);
+        addObject(instructions, 400, 320);
+        Label highScore = new Label ("HIGH SCORE: " + MyWorld.highScore, 80);
+        addObject(highScore, 400, 250);
     }
     public void act()
     {

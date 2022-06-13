@@ -28,13 +28,11 @@ public class PlayerChar extends Actor
     GreenfootImage[] idleLeft = new GreenfootImage[5];
     GreenfootImage[] chargeLeft = new GreenfootImage[4];
     GreenfootImage[] chargeRight = new GreenfootImage[4];
-    GreenfootImage[] death = new GreenfootImage[5];
-    
+        
     //Timers for animations
     private SimpleTimer walkTimer = new SimpleTimer();
     private SimpleTimer idleTimer = new SimpleTimer();
     private SimpleTimer chargeTimer = new SimpleTimer();
-    private SimpleTimer deathTimer = new SimpleTimer();
     
     //Booleans that determine which animations should be shown onscreen
     private boolean facingRight = true;
@@ -63,10 +61,6 @@ public class PlayerChar extends Actor
             chargeRight[i] = new GreenfootImage("images/playerChar/chargeUp/charge" + i + ".png");
             chargeLeft[i] = new GreenfootImage("images/playerChar/chargeUp/charge" + i + ".png");
             chargeLeft[i].mirrorHorizontally();
-        }
-        for (int i = 0; i < 5; i ++)
-        {
-            death[i] = new GreenfootImage("images/playerChar/death/death" + i + ".png");
         }
         setImage(walkRight[0]);
         walkTimer.mark();
@@ -189,15 +183,6 @@ public class PlayerChar extends Actor
                 chargeIndex = (chargeIndex + 1) % 4;
             }
             chargeTimer.mark();
-        }
-    }
-    
-    public void die()
-    {
-        if (deathTimer.millisElapsed() > 100 && deathIndex < 5)
-        {
-            setImage(death[deathIndex]);
-            deathIndex += 1;
         }
     }
     
