@@ -53,6 +53,7 @@ public class MyWorld extends World
         health -= amount;
         healthPoints.setValue("HP: " + health);
     }
+    
     public void scoreUp(int amount)
     {
         score += amount;
@@ -79,7 +80,6 @@ public class MyWorld extends World
                 addObject(e, x, y);
                 enemySpawn.mark();
             }
-            
         }
     }
     

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Enemy2Death
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Enemy2Death\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Sprite\ spawned\ in\ upon\ any\ Enemy2\ death,\ acting\ as\ a\ death\ animation\ and\ corpse\ of\ enemy2.\ Removed\ after\ a\ few\ seconds\ of\ being\ onscreen\r\n\ \r\n\ @author\ Alex\ V.\ \r\n\ @version\ 6.10.2022\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Enemy2Death\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

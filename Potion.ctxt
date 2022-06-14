@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Potion
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Potion\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Potion\ object\ which\ heals\ player\ for\ 2\ health\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.8.2022\r\n
 comment1.params=
 comment1.target=Potion()
 comment2.params=

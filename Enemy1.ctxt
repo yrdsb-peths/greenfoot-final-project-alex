@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Enemy1
-comment0.text=\r\n\ Basic\ enemy,\ which\ tracks\ the\ player's\ position\ and\ follows,\ player\ takes\ 1\ damage\ when\ touching\ this\ enemy\r\n\ which\ is\ destroyed\ upon\ touching\ the\ player\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Basic\ enemy,\ which\ tracks\ the\ player's\ position\ and\ follows\ player.\ Player\ takes\ 1\ damage\ when\ touching\ this\ enemy\r\n\ which\ is\ destroyed\ upon\ touching\ the\ player\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.8.2022\r\n
 comment1.params=
 comment1.target=Enemy1()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ enemy1\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

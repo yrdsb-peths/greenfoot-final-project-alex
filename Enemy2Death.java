@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Enemy2Death here.
+ * Sprite spawned in upon any Enemy2 death, acting as a death animation and corpse of enemy2. Removed after a few seconds of being onscreen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V. 
+ * @version 6.10.2022
  */
 public class Enemy2Death extends Actor
 {

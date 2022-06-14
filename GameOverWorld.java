@@ -32,11 +32,7 @@ public class GameOverWorld extends World
     }
     
     public void act()
-    {
-        if (Greenfoot.isKeyDown("enter"))
-        {
-            Greenfoot.setWorld(new TitleScreen());
-        }
+    {       
         if (Greenfoot.mousePressed(startOverB) || Greenfoot.mousePressed(startOver))
         {
             TitleScreen world = new TitleScreen();

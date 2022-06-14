@@ -5,14 +5,10 @@ import java.util.List;
  * The player can hold the spacebar to charge up an energy attack and release the key to unleash energy that destroys enemies
  * 
  * @author Alex V.
- * @version 6.06.2022
+ * @version 6.6.2022
  */
 public class PlayerAttack extends Actor
 {
-    /**
-     * Act - do whatever the PlayerAttack wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     int chargeIndex = 0;
     int releaseIndex = 0;
 
@@ -50,9 +46,13 @@ public class PlayerAttack extends Actor
         animate();
         setLocation(x,y);
         release();
+        
+        //destroys enemies touching it when the attack has been released
         if(released){
             destroy();
         }
+        
+        //blocks bullets while in charging state
         if (isTouching(Bullet.class) && isCharging == true && released == false)
         {
             removeTouching(Bullet.class);
@@ -135,6 +135,5 @@ public class PlayerAttack extends Actor
                 world.scoreUp(1);
             }
         } 
-
     }
 }

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Sprite spawned in upon any Enemy1 death, acting as a death animation. Removed after a few seconds of being onscreen
+ * Sprite spawned in upon any Enemy1 death, acting as a death animation and corpse of enemy1. Removed after a few seconds of being onscreen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V. 
+ * @version 6.9.2022
  */
 public class Enemy1Death extends Actor
 {

@@ -1,11 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Basic enemy, which tracks the player's position and follows, player takes 1 damage when touching this enemy
+ * Basic enemy, which tracks the player's position and follows player. Player takes 1 damage when touching this enemy
  * which is destroyed upon touching the player
  * 
  * @author Alex V.
- * @version (a version number or a date)
+ * @version 6.8.2022
  */
 public class Enemy1 extends Actor
 {
@@ -43,6 +43,7 @@ public class Enemy1 extends Actor
         checkRotation();
     }
 
+    //points enemy left or right
     public void checkRotation()
     {
         if (x < getX())
@@ -55,6 +56,7 @@ public class Enemy1 extends Actor
         }
     }
 
+    //walking animation
     public void animate()
     {
         if(walkTimer.millisElapsed() > 80 && facingRight == true)

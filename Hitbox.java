@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Hitbox for the player object, following the player around. If enemies touch the hitbox the player takes damage.
+ * Hitbox for the player object, set at the player's position. If enemies touch the hitbox the player takes damage.
  * 
  * @author Alex V. 
- * @version (a version number or a date)
+ * @version 6.10.2022
  */
 public class Hitbox extends Actor
 {
@@ -17,9 +17,11 @@ public class Hitbox extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        //sets location to player's location
         setLocation(x,y);
         checkHealth();
+        
+        //ends game when health equals 0
         if (MyWorld.health == 0)
         {
             MyWorld world = (MyWorld) getWorld();
@@ -29,7 +31,7 @@ public class Hitbox extends Actor
         }
     }
     
-    //Removes player health depending on what enemy the player is touching
+    //Changes player health depending on which object the player touches
     public void checkHealth()
     {
         if (isTouching(Enemy1.class))
@@ -48,6 +50,18 @@ public class Hitbox extends Actor
                 bullets.get(i).die();
                 MyWorld world = (MyWorld) getWorld();
                 world.healthDown(1);
+            }
+        }
+        //increase health when touching potion, but cannot go past the max health of 5
+        if (isTouching(Potion.class))
+        {
+            removeTouching(Potion.class);
+            MyWorld world = (MyWorld) getWorld();
+            if (world.health + 2 > 5)
+            {
+                world.healthDown(-(5-world.health));
+            }else{
+                world.healthDown(-2);
             }
         }
     }

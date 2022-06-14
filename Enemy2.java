@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class enemy1 here.
+ * Advanced enemy which moves around randomly, stopping occasionally to fire a bullet that  deals 1 damage to player
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex v.
+ * @version 6.10.2022
  */
 public class Enemy2 extends Actor
 {
@@ -57,10 +57,12 @@ public class Enemy2 extends Actor
 
     public void act()
     {
-        // Add your action code here.
         animate();
+        //turns towards a random position and moves towards it
         turnTowards(randomX, randomY);
         move(1);
+        
+        //every 3 seconds, the random position changes
         if (directionSwitch.millisElapsed() > 3000)
         {
             randomX = Greenfoot.getRandomNumber(800);
@@ -70,9 +72,9 @@ public class Enemy2 extends Actor
         setRotation(0);
         checkRotation();
         
-        //attacking
+        //attacks if the randomly generated number equals 1
         int num = Greenfoot.getRandomNumber(200);
-        if (num == 15)
+        if (num == 1)
         {
             isAttacking = true;
         }
@@ -104,6 +106,8 @@ public class Enemy2 extends Actor
             walkIndex = (walkIndex + 1) % 6;
             walkTimer.mark();
         }
+        
+        //attack animation 
         if(attackTimer.millisElapsed() > 60 && facingRight == true && isAttacking && attackIndex < 7)
         {
             setImage(attackRight[attackIndex]);
@@ -117,6 +121,7 @@ public class Enemy2 extends Actor
             attackTimer.mark();
         }
         
+        //once attack animation is complete, spawns a bullet object and points it towards the player
         if (attackIndex == 6)
         {
             Bullet b = new Bullet();

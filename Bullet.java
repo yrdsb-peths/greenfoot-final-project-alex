@@ -1,16 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bullet here.
+ * Bullet fired by the Enemy2 class, towards the player
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V.
+ * @version 6.10.2022
  */
 public class Bullet extends Actor
-{
-    public static int x;
-    public static int y;
-    
+{    
     /**
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,12 +15,14 @@ public class Bullet extends Actor
     public void act()
     {
         move(4);
+        //removes bullet if it is at edge
         if (isAtEdge())
         {
             die();
         }
     }
     
+    //deletes bullet object
     public void die()
     {
         getWorld().removeObject(this);

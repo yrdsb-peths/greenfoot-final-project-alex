@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Potion here.
+ * Potion object which heals player for 2 health
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V.
+ * @version 6.8.2022
  */
 public class Potion extends Actor
 {

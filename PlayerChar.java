@@ -2,17 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Player controlled character with walking, idle, and charging animations
- * Sprites from Penusbmic on itch.io
  * 
  * @author Alex V. 
- * @version May 30th, 2022
+ * @version 6.7.2022
  */
 public class PlayerChar extends Actor
 {
-    /**
-     * Act - do whatever the playerChar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     int speed = 2;
     
     //indexes for different animations
@@ -39,6 +34,7 @@ public class PlayerChar extends Actor
     private boolean isIdle = true;
     private boolean charging = true;
     
+    //timer controlling enemy spawning
     int spawnTimer = 2000;
     private SimpleTimer difficultyTimer = new SimpleTimer();
     
@@ -71,25 +67,23 @@ public class PlayerChar extends Actor
     
     public void act()
     {
-        // Add your action code here.
         keyInputs();
         animate();
-        consume();
         difficultyIncrease();
+        
+        //Adds powerups and enemies to world
         MyWorld world = (MyWorld) getWorld();
         world.spawnEnemies(spawnTimer);
         world.spawnPowerups();
         world.healthPoints.setLocation(getX(), getY() - 20);
         
-        //hitbox and playerAttack move with the player, enemies, use player coordinates to follow. 
+        //hitbox and playerAttack move with the player and enemies, use player coordinates to follow and track where the player is
         Enemy1.x = getX();
         Enemy1.y = getY();
         Enemy2.x = getX();
         Enemy2.y = getY();
         Hitbox.x = getX();
         Hitbox.y = getY();
-        Bullet.x = getX();
-        Bullet.y = getY();
         PlayerAttack.x = getX();
         PlayerAttack.y = getY();
     }
@@ -186,21 +180,7 @@ public class PlayerChar extends Actor
         }
     }
     
-    //increase heath when touching potion
-    public void consume()
-    {
-        if (isTouching(Potion.class))
-        {
-            removeTouching(Potion.class);
-            MyWorld world = (MyWorld) getWorld();
-            if (world.health + 2 > 5)
-            {
-                world.healthDown(-(5-world.health));
-            }else{
-                world.healthDown(-2);
-            }
-        }
-    }
+    
     
     //enemy spawnrate increases by 200 milliseconds every 15 seconds
     public void difficultyIncrease()
