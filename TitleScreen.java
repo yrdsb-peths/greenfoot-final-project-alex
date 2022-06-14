@@ -12,7 +12,10 @@ public class TitleScreen extends World
      * Constructor for objects of class TitleScreen.
      * 
      */
-    Button startB;
+    Button tutorialB = new Button(60,360);
+    Button startB = new Button(60,220);
+    Label instructions = new Label("INSTRUCTIONS", 50);
+    Label start = new Label("START", 60);
 
     public TitleScreen()
     {    
@@ -23,22 +26,22 @@ public class TitleScreen extends World
         addObject(titleLabel, 400, 100);
         Label highScore = new Label ("HIGH SCORE: " + MyWorld.highScore, 80);
         addObject(highScore, 400, 200);
-        
-        Button startB = new Button(60,360);
-        addObject(startB, 400, 290);
-        Label start = new Label("INSTRUCTIONS", 50);
-        addObject(start, 400, 290);
-        
-        Button tutorialB = new Button(60,220);
-        addObject(tutorialB, 400, 370);
-        Label instructions = new Label("START", 60);
-        addObject(instructions, 400, 370);
+
+        addObject(startB, 400, 370);
+        addObject(tutorialB, 400, 290);
+        addObject(instructions, 400, 290);
+        addObject(start, 400, 370);
     }
     public void act()
     {
-        if (Greenfoot.mouseClicked(startB))
+        if (Greenfoot.mousePressed(startB) || Greenfoot.mousePressed(start))
         {
             MyWorld world = new MyWorld();
+            Greenfoot.setWorld(world);
+        }
+        if (Greenfoot.mousePressed(tutorialB) || Greenfoot.mousePressed(instructions))
+        {
+            InstructionsWorld world = new InstructionsWorld();
             Greenfoot.setWorld(world);
         }
     }
