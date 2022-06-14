@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class InstructionsWorld here.
+ * Displays controls and mechanics for player to see
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V.
+ * @version 6.14.2022
  */
 public class InstructionsWorld extends World
 {
@@ -30,6 +30,12 @@ public class InstructionsWorld extends World
         {
             TitleScreen world = new TitleScreen();
             Greenfoot.setWorld(world);
+        }
+        if (TitleScreen.backgroundMusic.isPlaying())
+        {
+            TitleScreen.playing = true;
+        } else {
+            TitleScreen.playing = false;  
         }
     }
 }

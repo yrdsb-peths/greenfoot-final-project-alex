@@ -27,6 +27,8 @@ public class Enemy2 extends Actor
     int randomY = Greenfoot.getRandomNumber(500);
     private SimpleTimer directionSwitch = new SimpleTimer();
     
+    GreenfootSound death = new GreenfootSound("sounds/robot2Death.wav");
+    
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -53,6 +55,7 @@ public class Enemy2 extends Actor
         walkTimer.mark();
         attackTimer.mark();
         directionSwitch.mark();
+        death.setVolume(85);
     }
 
     public void act()
@@ -137,5 +140,6 @@ public class Enemy2 extends Actor
     {
         getWorld().addObject(new Enemy2Death(), this.getX(), this.getY());
         getWorld().removeObject(this);
+        death.play();
     }
 }

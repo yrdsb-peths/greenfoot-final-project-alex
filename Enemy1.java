@@ -16,6 +16,8 @@ public class Enemy1 extends Actor
     public static int x;
     public static int y;
     boolean facingRight = true;   
+    GreenfootSound death = new GreenfootSound("sounds/robotDeath.wav");
+    
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -30,6 +32,7 @@ public class Enemy1 extends Actor
         }
         setImage(walkRight[0]);
         walkTimer.mark();
+        death.setVolume(90);
     }
 
     public void act()
@@ -78,5 +81,6 @@ public class Enemy1 extends Actor
     {
         getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());
         getWorld().removeObject(this);
+        death.play();
     }
 }

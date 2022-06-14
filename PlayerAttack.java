@@ -87,7 +87,7 @@ public class PlayerAttack extends Actor
         //otherwise, while the space key is not held, the image is set to a small circle, not visible to players
         if (!Greenfoot.isKeyDown("space") && isCharging == false)
         {
-            setImage("images/attack0.png");
+            setImage("images/blank.png");
             chargeIndex = 0;
         }
     }

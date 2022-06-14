@@ -36,6 +36,7 @@ public class MyWorld extends World
         
         healthPoints.setValue("HP: " + health);
         scoreLabel.setValue("BOTS DEMOLISHED: " + score);
+        scoreLabel.setFillColor(Color.GRAY);
         
         enemySpawn.mark();
         Hitbox playerHitbox = new Hitbox();
