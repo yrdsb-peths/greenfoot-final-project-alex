@@ -26,15 +26,6 @@ public class Button extends Actor
     
     public void act()
     {
-        if (Greenfoot.mouseDragged(this))
-        {
-            GreenfootImage b = new GreenfootImage("images/mouseoverbutton.png");
-            b.scale(this.width, this.length);
-            setImage(b);
-        } else {
-            GreenfootImage b = new GreenfootImage("images/button.png");
-            b.scale(width, length);
-            setImage(b);
-        }
+        
     }
 }

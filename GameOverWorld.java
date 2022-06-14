@@ -20,7 +20,9 @@ public class GameOverWorld extends World
         Label died = new Label("YOU DIED", 70);
         addObject(died, 400,250);
         Label startOver = new Label("Press Enter to start again", 40);
-        addObject(startOver, 400,320);
+        addObject(startOver, 400,360);
+        Label score = new Label("SCORE: " + MyWorld.score, 50);
+        addObject(score, 400, 310);
         PlayerCharDeath p = new PlayerCharDeath();
         addObject(p, MyWorld.x, MyWorld.y);
     }
