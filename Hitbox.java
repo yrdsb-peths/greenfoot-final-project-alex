@@ -26,12 +26,13 @@ public class Hitbox extends Actor
         {
             MyWorld world = (MyWorld) getWorld();
             world.gameOver();
-            GameOverWorld world2 = new GameOverWorld();
-            Greenfoot.setWorld(world2);
+            
         }
     }
     
-    //Changes player health depending on which object the player touches
+    /**
+     * Changes health variable from MyWorld based on which object the hitbox is in contact with
+     */
     public void checkHealth()
     {
         if (isTouching(Enemy1.class))
@@ -56,6 +57,8 @@ public class Hitbox extends Actor
         if (isTouching(Potion.class))
         {
             removeTouching(Potion.class);
+            GreenfootSound consumed = new GreenfootSound("sounds/potionCollected.mp3");
+            consumed.play();
             MyWorld world = (MyWorld) getWorld();
             if (world.health + 2 > 5)
             {

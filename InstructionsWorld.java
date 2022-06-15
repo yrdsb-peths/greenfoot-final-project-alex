@@ -31,11 +31,5 @@ public class InstructionsWorld extends World
             TitleScreen world = new TitleScreen();
             Greenfoot.setWorld(world);
         }
-        if (TitleScreen.backgroundMusic.isPlaying())
-        {
-            TitleScreen.playing = true;
-        } else {
-            TitleScreen.playing = false;  
-        }
     }
 }

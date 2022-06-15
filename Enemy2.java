@@ -83,7 +83,10 @@ public class Enemy2 extends Actor
         }
     }
 
-    public void checkRotation()
+    /**
+     * Turns Enemy2 relative to the player's location, making sure it is always facing the player
+     */
+    private void checkRotation()
     {
         if (x < getX())
         {
@@ -95,6 +98,9 @@ public class Enemy2 extends Actor
         }
     }
 
+    /**
+     * Animates Enemy2 with walking and attacking animations
+     */
     public void animate()
     {
         if(walkTimer.millisElapsed() > 60 && facingRight == true && isAttacking == false)
@@ -136,6 +142,9 @@ public class Enemy2 extends Actor
     
     }
 
+    /**
+     * Creates a new enemy2death object at its location while removing itself from the screen
+     */
     public void die()
     {
         getWorld().addObject(new Enemy2Death(), this.getX(), this.getY());

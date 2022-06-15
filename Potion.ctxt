@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=Potion
-comment0.text=\r\n\ Potion\ object\ which\ heals\ player\ for\ 2\ health\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.8.2022\r\n
+comment0.text=\r\n\ Potion\ object\ which\ heals\ player\ for\ 2\ health\ points\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.8.2022\r\n
 comment1.params=
 comment1.target=Potion()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ animate()
+comment3.text=\r\n\ Animates\ the\ potion\r\n
 numComments=4

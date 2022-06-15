@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Potion object which heals player for 2 health
+ * Potion object which heals player for 2 health points
  * 
  * @author Alex V.
  * @version 6.8.2022
@@ -38,7 +38,10 @@ public class Potion extends Actor
         }
     }
     
-    public void animate()
+    /**
+     * Animates the potion
+     */
+    private void animate()
     {
         if (animateTimer.millisElapsed() > 100)
         {

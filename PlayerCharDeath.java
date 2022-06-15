@@ -33,8 +33,10 @@ public class PlayerCharDeath extends Actor
         disappearTimer.mark();
     }
     
-    //Plays its animation only once, stopping at the last frame
-    public void animateDeath()
+    /**
+     * Plays death animation for player, stopping at the last frame
+     */
+    private void animateDeath()
     {
         if (deathTimer.millisElapsed() > 150 && deathIndex < 5)
         {

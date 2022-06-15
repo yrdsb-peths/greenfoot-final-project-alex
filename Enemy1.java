@@ -46,8 +46,10 @@ public class Enemy1 extends Actor
         checkRotation();
     }
 
-    //points enemy left or right
-    public void checkRotation()
+    /**
+     * Turns Enemy1 relative to the player's location, making sure it is always facing the player
+     */
+    private void checkRotation()
     {
         if (x < getX())
         {
@@ -59,8 +61,10 @@ public class Enemy1 extends Actor
         }
     }
 
-    //walking animation
-    public void animate()
+    /**
+     * Animates Enemy1
+     */
+    private void animate()
     {
         if(walkTimer.millisElapsed() > 80 && facingRight == true)
         {
@@ -76,7 +80,9 @@ public class Enemy1 extends Actor
         }
     }
 
-    //creates a new enemy1death object at its location while removing itself from the screen
+    /**
+     * Creates a new enemy1death object at its location while removing itself from the screen
+     */    
     public void die()
     {
         getWorld().addObject(new Enemy1Death(), this.getX(), this.getY());

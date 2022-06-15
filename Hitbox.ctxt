@@ -6,4 +6,5 @@ comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Hitbox\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
 comment2.target=void\ checkHealth()
+comment2.text=\r\n\ Changes\ health\ variable\ from\ MyWorld\ based\ on\ which\ object\ the\ hitbox\ is\ in\ contact\ with\r\n
 numComments=3

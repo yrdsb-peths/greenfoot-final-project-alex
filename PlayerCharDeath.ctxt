@@ -8,4 +8,5 @@ comment2.params=
 comment2.target=PlayerCharDeath()
 comment3.params=
 comment3.target=void\ animateDeath()
+comment3.text=\r\n\ Plays\ death\ animation\ for\ player,\ stopping\ at\ the\ last\ frame\r\n
 numComments=4

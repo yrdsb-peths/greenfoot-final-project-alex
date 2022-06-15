@@ -11,7 +11,6 @@ public class GameOverWorld extends World
 
     /**
      * Constructor for objects of class GameOverWorld.
-     * 
      */
     Label startOver = new Label("PLAY AGAIN", 50);
     Button startOverB = new Button(60, 300);
@@ -37,12 +36,6 @@ public class GameOverWorld extends World
         {
             TitleScreen world = new TitleScreen();
             Greenfoot.setWorld(world);
-        }
-        if (TitleScreen.backgroundMusic.isPlaying())
-        {
-            TitleScreen.playing = true;
-        } else {
-            TitleScreen.playing = false;  
         }
     }
 }

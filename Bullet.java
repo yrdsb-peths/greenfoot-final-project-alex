@@ -22,7 +22,9 @@ public class Bullet extends Actor
         }
     }
     
-    //deletes bullet object
+    /**
+     * deletes bullet object
+     */
     public void die()
     {
         getWorld().removeObject(this);

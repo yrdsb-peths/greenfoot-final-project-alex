@@ -38,8 +38,10 @@ public class Enemy1Death extends Actor
         disappearTimer.mark();
     }
     
-    //Plays its animation only once, stopping at the last frame
-    public void animateDeath()
+    /**
+     * Runs through death animation once, stopping at the last frame
+     */
+    private void animateDeath()
     {
         if (deathTimer.millisElapsed() > 150 && deathIndex < 5)
         {

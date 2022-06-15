@@ -59,7 +59,10 @@ public class PlayerAttack extends Actor
         }
     }
 
-    public void animate()
+    /**
+     * Animates the attack charging up
+     */
+    private void animate()
     {
         //while the spacebar is held the attack charges up
         if (chargeUpTimer.millisElapsed() > 65 && Greenfoot.isKeyDown("space") && chargeIndex < 6 && !Greenfoot.isKeyDown("s") 
@@ -92,8 +95,10 @@ public class PlayerAttack extends Actor
         }
     }
 
-    //After holding the spacebar to charge up the attack, players can release the button to unleash a wave of energy which damages enemies
-    public void release()
+    /**
+     * After holding the spacebar to charge up the attack, players can release the button to unleash a wave of energy which damages enemies
+     */
+    private void release()
     {
         if (isCharging == true && !Greenfoot.isKeyDown("space"))
         {
@@ -114,8 +119,10 @@ public class PlayerAttack extends Actor
         }
     }
 
-    //If the attack hits enemies, executes the die function from both enemy classes, increases score.
-    public void destroy()
+    /**
+     * Executes die function for either enemy if hit by the attack, increasing score
+     */
+    private void destroy()
     {
         if (isTouching(Enemy1.class))
         {

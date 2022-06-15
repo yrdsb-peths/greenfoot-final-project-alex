@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * Main world where the game is played
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V.
+ * @version 6.15.2022
  */
 public class MyWorld extends World
 {
@@ -13,8 +13,11 @@ public class MyWorld extends World
     public static int highScore;
     Label healthPoints = new Label("HP: " + health, 20);
     Label scoreLabel = new Label("BOTS DEMOLISHED: " + score, 80);
+    
+    //timers for spawning enemies and powerups
     SimpleTimer enemySpawn = new SimpleTimer();
     SimpleTimer powerupSpawn = new SimpleTimer();
+    
     PlayerChar test = new PlayerChar();
     
     public static int x;
@@ -40,27 +43,36 @@ public class MyWorld extends World
         
         enemySpawn.mark();
         Hitbox playerHitbox = new Hitbox();
-        PlayerAttack a = new PlayerAttack();
+        PlayerAttack attack = new PlayerAttack();
         
-        addObject(a, 400, 150);
+        addObject(attack, 400, 150);
         addObject(test, 400, 150);
         addObject(playerHitbox, 400, 150);
         
         addObject(healthPoints, 25,15);
     }
     
+    /**
+     * Changes player health by a certain number
+     */
     public void healthDown(int amount)
     {
         health -= amount;
         healthPoints.setValue("HP: " + health);
     }
     
+    /**
+     * Increases score
+     */
     public void scoreUp(int amount)
     {
         score += amount;
         scoreLabel.setValue("BOTS DEMOLISHED: " + score);
     }
     
+    /**
+     * Spawns enemies with a 1 in 6 chance of spawning an Enemy2 object
+     */
     public void spawnEnemies(int timer)
     {
         if (enemySpawn.millisElapsed() > timer)
@@ -84,6 +96,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Spawns powerups
+     */
     public void spawnPowerups()
     {
         if (powerupSpawn.millisElapsed() > 10000)
@@ -96,6 +111,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * When the game ends, collects playerChar's coordinates, sets highscore for title screen, switches world to GameOverWorld
+     */
     public void gameOver()
     {
         x = test.getX();
@@ -104,5 +122,7 @@ public class MyWorld extends World
         {
             highScore = score;
         }
+        GameOverWorld world = new GameOverWorld();
+        Greenfoot.setWorld(world);
     }
 }

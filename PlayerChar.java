@@ -88,8 +88,10 @@ public class PlayerChar extends Actor
         PlayerAttack.y = getY();
     }
     
-    //Controls different keys user can press to control character
-    public void keyInputs()
+    /**
+     * Controls different keys user can press to control character
+     */
+    private void keyInputs()
     {
         if (Greenfoot.isKeyDown("space") && !Greenfoot.isKeyDown("s") && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
         {
@@ -109,7 +111,6 @@ public class PlayerChar extends Actor
         {
             if (Greenfoot.isKeyDown("d"))
             {
-
                 move(speed);
                 facingRight = true;
                 isIdle = false;
@@ -133,8 +134,10 @@ public class PlayerChar extends Actor
         }
     }
     
-    //Animates character with different sets of animations
-    public void animate()
+    /**
+     * Animates character with different sets of animations
+     */
+    private void animate()
     {
         if(walkTimer.millisElapsed() > 80)
         {
@@ -180,10 +183,10 @@ public class PlayerChar extends Actor
         }
     }
     
-    
-    
-    //enemy spawnrate increases by 200 milliseconds every 15 seconds
-    public void difficultyIncrease()
+    /**
+     * Increases enemy spawnrate every 15 seconds by 200 milliseconds
+     */
+    private void difficultyIncrease()
     {
         if (difficultyTimer.millisElapsed() > 15000 && spawnTimer >= 800)
         {
