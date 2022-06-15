@@ -8,6 +8,4 @@ comment2.params=
 comment2.target=Enemy1Death()
 comment3.params=
 comment3.target=void\ animateDeath()
-comment4.params=
-comment4.target=void\ disappear()
-numComments=5
+numComments=4

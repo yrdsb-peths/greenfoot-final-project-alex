@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PlayerChar extends Actor
 {
-    int speed = 2;
+    public static int speed = 2;
     
     //indexes for different animations
     int walkIndex = 0;

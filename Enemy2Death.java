@@ -21,7 +21,11 @@ public class Enemy2Death extends Actor
     {
         // Add your action code here.
         animateDeath();
-        disappear();
+        //After this object has been onscreen for 5 seconds, it despawns
+        if (disappearTimer.millisElapsed() > 5000)
+        {
+            getWorld().removeObject(this);
+        }
     }
     
     public Enemy2Death()
@@ -42,14 +46,6 @@ public class Enemy2Death extends Actor
             setImage(death[deathIndex]);
             deathIndex = deathIndex + 1;
             deathTimer.mark();
-        }
-    }
-    
-    public void disappear()
-    {
-        if (disappearTimer.millisElapsed() > 5000)
-        {
-            getWorld().removeObject(this);
         }
     }
 }

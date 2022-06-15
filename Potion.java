@@ -15,6 +15,7 @@ public class Potion extends Actor
     int animateIndex = 0;
     GreenfootImage[] swirl = new GreenfootImage[12];
     SimpleTimer animateTimer = new SimpleTimer();
+    SimpleTimer disappearTimer = new SimpleTimer();
     
     public Potion()
     {
@@ -24,12 +25,17 @@ public class Potion extends Actor
             swirl[i].scale(15,30);
         }
         animateTimer.mark();
+        disappearTimer.mark();
     }
     
     public void act()
     {
         // Add your action code here.
         animate();
+        if (disappearTimer.millisElapsed() > 25000)
+        {
+            getWorld().removeObject(this);
+        }
     }
     
     public void animate()
