@@ -28,6 +28,7 @@ public class Enemy2 extends Actor
     private SimpleTimer directionSwitch = new SimpleTimer();
     
     GreenfootSound death = new GreenfootSound("sounds/robot2Death.wav");
+    GreenfootSound fired = new GreenfootSound("sounds/shotFired.wav");
     
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
@@ -56,6 +57,7 @@ public class Enemy2 extends Actor
         attackTimer.mark();
         directionSwitch.mark();
         death.setVolume(85);
+        fired.setVolume(80);
     }
 
     public void act()
@@ -133,6 +135,7 @@ public class Enemy2 extends Actor
         //once attack animation is complete, spawns a bullet object and points it towards the player
         if (attackIndex == 6)
         {
+            fired.play();
             Bullet b = new Bullet();
             getWorld().addObject(b, getX(), getY());
             b.turnTowards(x,y);

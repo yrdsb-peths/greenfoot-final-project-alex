@@ -18,7 +18,8 @@ public class TitleScreen extends World
     Label start = new Label("START", 60);
     
     public static GreenfootSound backgroundMusic = new GreenfootSound("sounds/Soundtrack.mp3");
-
+    public static boolean playing = false;
+    
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -34,6 +35,7 @@ public class TitleScreen extends World
         addObject(instructions, 400, 290);
         addObject(start, 400, 370);
         backgroundMusic.setVolume(45);
+        playing = false;
     }
     public void act()
     {
@@ -48,6 +50,10 @@ public class TitleScreen extends World
             InstructionsWorld world = new InstructionsWorld();
             Greenfoot.setWorld(world);
         }
-        backgroundMusic.playLoop();
+        if (playing == false)
+        {
+            backgroundMusic.playLoop();
+            playing = true;
+        }
     }
 }
