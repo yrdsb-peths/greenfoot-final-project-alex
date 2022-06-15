@@ -24,9 +24,6 @@ public class PlayerAttack extends Actor
     boolean isCharging = false;
 
     public static boolean released = false;    
-    
-    GreenfootSound chargeSound = new GreenfootSound("sounds/chargeUp.wav");
-    GreenfootSound releasedSound = new GreenfootSound("sounds/attackReleased.wav");
 
     public PlayerAttack()
     {
@@ -41,7 +38,7 @@ public class PlayerAttack extends Actor
         chargeUpTimer.mark();
         releaseTimer.mark();
         deathDelay.mark();
-        chargeSound.setVolume(80);
+        
     }
 
     public void act()
@@ -74,6 +71,8 @@ public class PlayerAttack extends Actor
         {
             if (chargeIndex == 0)
             {
+                GreenfootSound chargeSound = new GreenfootSound("sounds/chargeUp.wav");
+                chargeSound.setVolume(80);
                 chargeSound.play();
             }
             setImage(charge[chargeIndex]);
@@ -114,6 +113,8 @@ public class PlayerAttack extends Actor
             {
                 if (releaseIndex == 0)
                 {
+                    GreenfootSound releasedSound = new GreenfootSound("sounds/attackReleased.wav");
+                    releasedSound.setVolume(70);
                     releasedSound.play();
                 }
                 setImage(release[releaseIndex]);
