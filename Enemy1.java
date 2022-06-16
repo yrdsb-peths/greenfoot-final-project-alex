@@ -1,8 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Basic enemy, which tracks the player's position and follows player. Player takes 1 damage when touching this enemy
- * which is destroyed upon touching the player
+ * Basic enemy, which tracks the player's position and follows player
+ * Destroyed upon touching player which causes the player to take 1 damage
  * 
  * @author Alex V.
  * @version 6.8.2022

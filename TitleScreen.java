@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TitleScreen here.
+ * Title screen of game with buttons to display instructions and start the game
+ * Player high score is also displayed
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alex V.
+ * @version 6.13.2022
  */
 public class TitleScreen extends World
 {

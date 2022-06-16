@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Player controlled character with walking, idle, and charging animations
+ * Player controlled character
  * 
  * @author Alex V. 
  * @version 6.7.2022

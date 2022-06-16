@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PlayerAttack
-comment0.text=\r\n\ The\ player\ can\ hold\ the\ spacebar\ to\ charge\ up\ an\ energy\ attack\ and\ release\ the\ key\ to\ unleash\ energy\ that\ destroys\ enemies\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.6.2022\r\n
+comment0.text=\r\n\ Players\ can\ hold\ the\ spacebar\ to\ charge\ up\ the\ attack\r\n\ When\ the\ key\ is\ released\ the\ attack\ releases,\ destroying\ enemies\ in\ its\ radius\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.6.2022\r\n
 comment1.params=
 comment1.target=PlayerAttack()
 comment2.params=

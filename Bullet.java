@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Bullet fired by the Enemy2 class, towards the player
+ * Bullet fired by the Enemy2 class
  * 
  * @author Alex V.
  * @version 6.10.2022

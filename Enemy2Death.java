@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Sprite spawned in upon any Enemy2 death, acting as a death animation and corpse of enemy2. Removed after a few seconds of being onscreen
+ * Sprite spawned in upon any Enemy2 death, acting as a death animation and corpse of enemy2. Removed after a 5 seconds of being onscreen
  * 
  * @author Alex V. 
  * @version 6.10.2022

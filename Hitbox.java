@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Hitbox for the player object, set at the player's position. If enemies touch the hitbox the player takes damage.
+ * Hitbox for the player object, set at the player object's position
  * 
  * @author Alex V. 
  * @version 6.10.2022

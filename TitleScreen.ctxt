@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=TitleScreen
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ TitleScreen\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Title\ screen\ of\ game\ with\ buttons\ to\ display\ instructions\ and\ start\ the\ game\r\n\ Player\ high\ score\ is\ also\ displayed\r\n\ \r\n\ @author\ Alex\ V.\r\n\ @version\ 6.13.2022\r\n
 comment1.params=
 comment1.target=TitleScreen()
 comment2.params=

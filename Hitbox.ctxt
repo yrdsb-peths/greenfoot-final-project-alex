@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Hitbox
-comment0.text=\r\n\ Hitbox\ for\ the\ player\ object,\ set\ at\ the\ player's\ position.\ If\ enemies\ touch\ the\ hitbox\ the\ player\ takes\ damage.\r\n\ \r\n\ @author\ Alex\ V.\ \r\n\ @version\ 6.10.2022\r\n
+comment0.text=\r\n\ Hitbox\ for\ the\ player\ object,\ set\ at\ the\ player\ object's\ position\r\n\ \r\n\ @author\ Alex\ V.\ \r\n\ @version\ 6.10.2022\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Hitbox\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

@@ -2,7 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
- * The player can hold the spacebar to charge up an energy attack and release the key to unleash energy that destroys enemies
+ * Players can hold the spacebar to charge up the attack
+ * When the key is released the attack releases, destroying enemies in its radius
  * 
  * @author Alex V.
  * @version 6.6.2022
