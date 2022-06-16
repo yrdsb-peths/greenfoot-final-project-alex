@@ -39,7 +39,7 @@ public class Enemy2Death extends Actor
         disappearTimer.mark();
     }
     
-    public void animateDeath()
+    private void animateDeath()
     {
         if (deathTimer.millisElapsed() > 130 && deathIndex < 8)
         {

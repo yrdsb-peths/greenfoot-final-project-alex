@@ -35,7 +35,7 @@ public class PlayerChar extends Actor
     private boolean charging = true;
     
     //timer controlling enemy spawning
-    int spawnTimer = 2000;
+    int spawnRate = 2000;
     private SimpleTimer difficultyTimer = new SimpleTimer();
     
     public PlayerChar()
@@ -73,7 +73,7 @@ public class PlayerChar extends Actor
         
         //Adds powerups and enemies to world
         MyWorld world = (MyWorld) getWorld();
-        world.spawnEnemies(spawnTimer);
+        world.spawnEnemies(spawnRate);
         world.spawnPowerups();
         world.healthPoints.setLocation(getX(), getY() - 20);
         
@@ -184,13 +184,13 @@ public class PlayerChar extends Actor
     }
     
     /**
-     * Increases enemy spawnrate every 15 seconds by 200 milliseconds
+     * Increases enemy spawnrate every 12 seconds by 200 milliseconds
      */
     private void difficultyIncrease()
     {
-        if (difficultyTimer.millisElapsed() > 15000 && spawnTimer >= 800)
+        if (difficultyTimer.millisElapsed() > 12000 && spawnRate >= 400)
         {
-            spawnTimer -= 200;
+            spawnRate -= 200;
             difficultyTimer.mark();
         }
     }

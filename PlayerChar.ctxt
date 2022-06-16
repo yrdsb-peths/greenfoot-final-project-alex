@@ -13,5 +13,5 @@ comment4.target=void\ animate()
 comment4.text=\r\n\ Animates\ character\ with\ different\ sets\ of\ animations\r\n
 comment5.params=
 comment5.target=void\ difficultyIncrease()
-comment5.text=\r\n\ Increases\ enemy\ spawnrate\ every\ 15\ seconds\ by\ 200\ milliseconds\r\n
+comment5.text=\r\n\ Increases\ enemy\ spawnrate\ every\ 12\ seconds\ by\ 200\ milliseconds\r\n
 numComments=6

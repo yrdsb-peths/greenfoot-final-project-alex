@@ -103,7 +103,7 @@ public class Enemy2 extends Actor
     /**
      * Animates Enemy2 with walking and attacking animations
      */
-    public void animate()
+    private void animate()
     {
         if(walkTimer.millisElapsed() > 60 && facingRight == true && isAttacking == false)
         {
@@ -118,7 +118,7 @@ public class Enemy2 extends Actor
             walkTimer.mark();
         }
         
-        //attack animation 
+        //attack animation
         if(attackTimer.millisElapsed() > 60 && facingRight == true && isAttacking && attackIndex < 7)
         {
             setImage(attackRight[attackIndex]);

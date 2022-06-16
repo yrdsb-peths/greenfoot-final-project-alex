@@ -22,7 +22,7 @@ public class PlayerAttack extends Actor
 
     public static int x;
     public static int y;
-    boolean isCharging = false;
+    boolean chargedUp = false;
 
     public static boolean released = false;    
 
@@ -39,7 +39,6 @@ public class PlayerAttack extends Actor
         chargeUpTimer.mark();
         releaseTimer.mark();
         deathDelay.mark();
-        
     }
 
     public void act()
@@ -47,26 +46,26 @@ public class PlayerAttack extends Actor
         // Add your action code here.
         animate();
         setLocation(x,y);
-        release();
         
         //destroys enemies touching it when the attack has been released
-        if(released){
+        if(released)
+        {
             destroy();
         }
         
         //blocks bullets while in charging state
-        if (isTouching(Bullet.class) && isCharging == true && released == false)
+        if (isTouching(Bullet.class) && chargedUp == true && released == false)
         {
             removeTouching(Bullet.class);
         }
     }
 
     /**
-     * Animates the attack charging up
+     * Animates the attack charging up and releasing
      */
     private void animate()
     {
-        //while the spacebar is held the attack charges up
+        //while the spacebar is held and while the player is not moving, the attack charges up
         if (chargeUpTimer.millisElapsed() > 65 && Greenfoot.isKeyDown("space") && chargeIndex < 6 && !Greenfoot.isKeyDown("s") 
         && !Greenfoot.isKeyDown("a") && !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("d"))
         {
@@ -92,30 +91,25 @@ public class PlayerAttack extends Actor
             {
                 chargeIndex = 6;
             }
-            isCharging = true;
+            chargedUp = true;
             chargeUpTimer.mark();
         }
-        //otherwise, while the space key is not held, the image is set to a small circle, not visible to players
-        if (!Greenfoot.isKeyDown("space") && isCharging == false)
+        //while the spacebar is not down, sets image to a blank image so it is invisible to players
+        if (!Greenfoot.isKeyDown("space") && chargedUp == false)
         {
             setImage("images/blank.png");
             chargeIndex = 0;
         }
-    }
-
-    /**
-     * After holding the spacebar to charge up the attack, players can release the button to unleash a wave of energy which damages enemies
-     */
-    private void release()
-    {
-        if (isCharging == true && !Greenfoot.isKeyDown("space"))
+        
+        //when the attack is fully charged and the spacebar released, it releases a wave of energy
+        if (chargedUp == true && !Greenfoot.isKeyDown("space"))
         {
-            if (releaseTimer.millisElapsed() > 40 && releaseIndex < 4 && chargeIndex == 6 || chargeIndex == 7)
+            if (releaseTimer.millisElapsed() > 40 && releaseIndex < 4)
             {
                 if (releaseIndex == 0)
                 {
                     GreenfootSound releasedSound = new GreenfootSound("sounds/attackReleased.wav");
-                    releasedSound.setVolume(70);
+                    releasedSound.setVolume(65);
                     releasedSound.play();
                 }
                 setImage(release[releaseIndex]);
@@ -124,9 +118,10 @@ public class PlayerAttack extends Actor
                 releaseTimer.mark();
             }
         }
+        
         if (releaseIndex == 4)
         {
-            isCharging = false;
+            chargedUp = false;
             released = false;
             releaseIndex = 0;
             chargeIndex = 0;
@@ -134,7 +129,7 @@ public class PlayerAttack extends Actor
     }
 
     /**
-     * Executes die function for either enemy if hit by the attack, increasing score
+     * Executes die function for either enemy if hit by the attack and increases score
      */
     private void destroy()
     {

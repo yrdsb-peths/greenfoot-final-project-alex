@@ -50,6 +50,4 @@ public class Enemy1Death extends Actor
             deathTimer.mark();
         }
     }
-
-      
 }
