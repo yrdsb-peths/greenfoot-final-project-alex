@@ -32,7 +32,7 @@ public class Potion extends Actor
     {
         // Add your action code here.
         animate();
-        if (disappearTimer.millisElapsed() > 25000)
+        if (disappearTimer.millisElapsed() > 20000)
         {
             getWorld().removeObject(this);
         }
