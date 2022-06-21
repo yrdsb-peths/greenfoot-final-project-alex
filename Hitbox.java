@@ -22,7 +22,7 @@ public class Hitbox extends Actor
         checkHealth();
         
         //ends game when health equals 0
-        if (MyWorld.health == 0)
+        if (MyWorld.health <= 0)
         {
             MyWorld world = (MyWorld) getWorld();
             world.gameOver();
